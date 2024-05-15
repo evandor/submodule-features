@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Features Submodule",
   description: "submodule documentation",
+  base: '/submodule-features/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
