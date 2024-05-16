@@ -1,10 +1,8 @@
 import {defineStore} from "pinia";
-import {useUtils} from "src/services/Utils";
-import {ref} from "vue";
-import {Window} from "src/windows/models/Window";
-import PersistenceService from "src/services/PersistenceService";
+import {computed, ref} from "vue";
 import FeaturesPersistence from "src/features/persistence/FeaturesPersistence";
 import {LocalStorage} from "quasar";
+import {AppFeatures, FeatureIdent} from "src/models/AppFeatures";
 
 export const useFeaturesStore = defineStore('features', () => {
 
@@ -39,8 +37,25 @@ export const useFeaturesStore = defineStore('features', () => {
       }
     }
   }
+
+  const hasFeature = computed(() => {
+    return (feature: FeatureIdent): boolean => {
+      if (feature === FeatureIdent.SIDE_PANEL) {
+        // @ts-ignore
+        return chrome.sidePanel !== undefined
+      }
+      const appFeature = new AppFeatures().getFeature(feature)
+      if (appFeature) {
+        return activeFeatures.value.indexOf(feature.toLowerCase()) >= 0
+      }
+      return false
+    }
+  })
+
+
   return {
     initialize,
+    hasFeature
   }
 })
 
