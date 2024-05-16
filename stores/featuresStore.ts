@@ -23,7 +23,7 @@ export const useFeaturesStore = defineStore('features', () => {
   const activeFeatures = ref<string[]>(LocalStorage.getItem('ui.activeFeatures') as string[] || [])
 
   async function initialize(ps: FeaturesPersistence) {
-    console.debug(" ...initializing features store")
+    console.debug(" ...initializing features store", ps?.getServiceName())
     storage = ps
     await storage.init()
     await load()
