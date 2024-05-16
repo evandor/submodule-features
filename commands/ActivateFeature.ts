@@ -1,7 +1,7 @@
 import Command from "src/domain/Command";
 import {ExecutionResult} from "src/domain/ExecutionResult";
-import {usePermissionsStore} from "src/stores/permissionsStore";
 import {Feature} from "src/features/models/Feature";
+import {useFeaturesStore} from "src/features/stores/featuresStore";
 
 
 export class ActivateFeatureCommand implements Command<any> {
@@ -12,7 +12,7 @@ export class ActivateFeatureCommand implements Command<any> {
 
 
   async execute(): Promise<ExecutionResult<any>> {
-    usePermissionsStore().activateFeature(this.feature.ident.toLowerCase())
+    useFeaturesStore().activateFeature(this.feature.ident.toLowerCase())
     return Promise.resolve(
       new ExecutionResult(
         "done",

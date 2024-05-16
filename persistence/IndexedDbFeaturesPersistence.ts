@@ -39,6 +39,10 @@ class IndexedDbFeaturesPersistence implements FeaturesPersistence {
     return this.db.getAll(this.STORE_IDENT)
   }
 
+  saveActiveFeatures(val: string[]): any {
+    // TODO
+  }
+
 
 }
 

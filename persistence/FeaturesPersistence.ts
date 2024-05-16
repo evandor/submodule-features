@@ -7,6 +7,8 @@ interface FeaturesPersistence {
 
   getActiveFeatures(): Promise<string[]>
 
+  saveActiveFeatures(val: string[]): any
+
   compactDb(): Promise<any>
 
 }
