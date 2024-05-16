@@ -1,4 +1,3 @@
-
 ```vue
   import {useFeaturesStore} from "src/features/stores/featuresStore";
 
@@ -25,7 +24,7 @@ export class AppFeatures {
     new Feature(FeatureIdent.STANDALONE_APP, FeatureType.RECOMMENDED, 'Standalone App', 'o_open_in_new', ['bex'])
     //(...)
     ]
-}   
+}
 ```
 
 The Feature class is provided by the features submodule:
