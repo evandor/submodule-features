@@ -13,4 +13,4 @@ git submodule add -b main https://github.com/evandor/submodule-features.git src/
 
 ## Branches
 
-currenly, there is only 'main'
+currently, there is only 'main'
