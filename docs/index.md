@@ -8,11 +8,11 @@ hero:
   tagline: My great project tagline
   actions:
     - theme: brand
-      text: original readme!
+      text: original readme
       link: /readme
-#    - theme: alt
-#      text: API Examples
-#      link: /api-examples
+    - theme: alt
+      text: Installation
+      link: /installation
 
 features:
   - title: Feature Management Submodule
