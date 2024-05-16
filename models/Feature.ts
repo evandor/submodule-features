@@ -1,6 +1,6 @@
 import Command from "src/domain/Command";
-import {ActivateFeatureCommand} from "src/features/src/commands/ActivateFeature";
-import {DeactivateFeatureCommand} from "src/features/src/commands/DeactivateFeature";
+import {ActivateFeatureCommand} from "src/features/commands/ActivateFeature";
+import {DeactivateFeatureCommand} from "src/features/commands/DeactivateFeature";
 
 export class Feature {
 
