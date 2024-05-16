@@ -1,7 +1,7 @@
 import Command from "src/domain/Command";
 import {ExecutionResult} from "src/domain/ExecutionResult";
 import {usePermissionsStore} from "src/stores/permissionsStore";
-import {Feature} from "src/features/models/Feature";
+import {Feature} from "src/features/src/models/Feature";
 
 
 export class DeactivateFeatureCommand implements Command<any> {

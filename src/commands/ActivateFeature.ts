@@ -1,7 +1,7 @@
-import Command from "../../domain/Command";
-import {ExecutionResult} from "../../domain/ExecutionResult";
-import {Feature} from "../models/Feature";
-import {useFeaturesStore} from "../stores/featuresStore";
+import Command from "src/domain/Command";
+import {ExecutionResult} from "src/domain/ExecutionResult";
+import {Feature} from "src/features/src/models/Feature";
+import {useFeaturesStore} from "src/features/src/stores/featuresStore";
 
 
 export class ActivateFeatureCommand implements Command<any> {

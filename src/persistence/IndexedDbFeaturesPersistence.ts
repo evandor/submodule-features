@@ -1,5 +1,5 @@
 import {IDBPDatabase, openDB, deleteDB} from "idb";
-import FeaturesPersistence from "src/features/persistence/FeaturesPersistence";
+import FeaturesPersistence from "src/features/src/persistence/FeaturesPersistence";
 
 class IndexedDbFeaturesPersistence implements FeaturesPersistence {
 

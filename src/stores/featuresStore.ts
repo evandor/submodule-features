@@ -1,6 +1,6 @@
 import {defineStore} from "pinia";
 import {computed, ref} from "vue";
-import FeaturesPersistence from "src/features/persistence/FeaturesPersistence";
+import FeaturesPersistence from "src/features/src/persistence/FeaturesPersistence";
 import {LocalStorage} from "quasar";
 import {AppFeatures, FeatureIdent} from "src/models/AppFeatures";
 import {useSuggestionsStore} from "src/suggestions/stores/suggestionsStore";
