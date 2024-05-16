@@ -13,6 +13,9 @@ hero:
     - theme: alt
       text: Installation
       link: /installation
+    - theme: alt
+      text: Usage
+      link: /usage
 
 features:
   - title: Feature Management Submodule
