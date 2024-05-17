@@ -1,6 +1,3 @@
-# submodule-bookmarks
+This is a git submodule being used in tabsets.net.
 
-used as submodule in
-
-* tabsets
-* bookmrkx
+See [tabsets](https://evandor.github.io/tabsets/)
