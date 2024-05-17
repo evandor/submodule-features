@@ -9,6 +9,9 @@ import {useCommandExecutor} from "src/services/CommandExecutor";
 import {CreateSpecialTabsetCommand, SpecialTabsetIdent} from "src/domain/tabsets/CreateSpecialTabset";
 import {TabsetType} from "src/tabsets/models/Tabset";
 import {useTabsetService} from "src/services/TabsetService2";
+import {useUtils} from "src/services/Utils";
+
+const {sendMsg} = useUtils()
 
 export const useFeaturesStore = defineStore('features', () => {
 
@@ -63,8 +66,7 @@ export const useFeaturesStore = defineStore('features', () => {
           //useSuggestionsStore().removeSuggestion(StaticSuggestionIdent.TRY_TAB_DETAILS_FEATURE)
           useCommandExecutor().executeFromUi(new CreateSpecialTabsetCommand(SpecialTabsetIdent.IGNORE, TabsetType.SPECIAL))
         }
-        // TODO
-        //sendMsg('feature-activated', {feature: feature})
+        sendMsg('feature-activated', {feature: feature})
       }
     }
   })
@@ -86,8 +88,7 @@ export const useFeaturesStore = defineStore('features', () => {
       }
       activeFeatures.value.splice(index, 1)
       storage.saveActiveFeatures(activeFeatures.value)
-     // TODO
-      // sendMsg('feature-deactivated', {feature: feature})
+      sendMsg('feature-deactivated', {feature: feature})
       new AppFeatures().getFeatures().forEach(f => {
         if (f.requires.findIndex((r: string) => {
           return r === deactivatedIdent.toString()
