@@ -9,7 +9,6 @@ export class ActivateFeatureCommand implements Command<any> {
     public feature: Feature) {
   }
 
-
   async execute(): Promise<ExecutionResult<any>> {
     useFeaturesStore().activateFeature(this.feature.ident.toLowerCase())
     return Promise.resolve(

@@ -1,13 +1,7 @@
 import {defineStore} from "pinia";
 import {computed, ref} from "vue";
 import FeaturesPersistence from "src/features/persistence/FeaturesPersistence";
-import {LocalStorage} from "quasar";
 import {AppFeatures, FeatureIdent} from "src/models/AppFeatures";
-import {useSuggestionsStore} from "src/suggestions/stores/suggestionsStore";
-import {StaticSuggestionIdent, Suggestion} from "src/suggestions/models/Suggestion";
-import {useCommandExecutor} from "src/services/CommandExecutor";
-import {CreateSpecialTabsetCommand, SpecialTabsetIdent} from "src/domain/tabsets/CreateSpecialTabset";
-import {TabsetType} from "src/tabsets/models/Tabset";
 import {useTabsetService} from "src/services/TabsetService2";
 import {useUtils} from "src/services/Utils";
 
@@ -23,7 +17,7 @@ export const useFeaturesStore = defineStore('features', () => {
   const permissions = ref<chrome.permissions.Permissions | undefined>(undefined)
 
   // related to tabsets permissions
-  const activeFeatures = ref<string[]>(LocalStorage.getItem('ui.activeFeatures') as string[] || [])
+  const activeFeatures = ref<string[]>( [])
 
   async function initialize(ps: FeaturesPersistence) {
     console.debug(" ...initializing features store", ps?.getServiceName())
@@ -34,6 +28,7 @@ export const useFeaturesStore = defineStore('features', () => {
 
   async function load() {
     activeFeatures.value = await storage.getActiveFeatures()
+    console.log("loaded from storage", activeFeatures.value)
     // if (process.env.MODE !== 'bex') {
     //   return
     // }
@@ -47,29 +42,29 @@ export const useFeaturesStore = defineStore('features', () => {
     }
   }
 
-  // TODO really a getter?
-  const activateFeature = computed(() => {
-    return (feature: string): void => {
-      if (storage && activeFeatures.value.indexOf(feature) < 0) {
-        activeFeatures.value.push(feature)
-        storage.saveActiveFeatures(activeFeatures.value)
+  function activateFeature(feature: string) {
+    console.log("activate feature", feature, activeFeatures.value)
+    if (storage && activeFeatures.value.indexOf(feature) < 0) {
+      console.log("===<", activeFeatures.value)
+      activeFeatures.value.push(feature)
+      console.log("===>", activeFeatures.value)
+      storage.saveActiveFeatures(activeFeatures.value)
 
-        if (FeatureIdent.SPACES.toLowerCase() === feature) {
-          useSuggestionsStore().inactivateSuggestion(Suggestion.getStaticSuggestion(StaticSuggestionIdent.TRY_SPACES_FEATURE))
-        }
-        if (FeatureIdent.BACKUP.toLowerCase() === feature) {
-          useCommandExecutor().executeFromUi(new CreateSpecialTabsetCommand(SpecialTabsetIdent.BACKUP, TabsetType.SPECIAL))
-        }
-        if (FeatureIdent.HELP.toLowerCase() === feature) {
-          useCommandExecutor().executeFromUi(new CreateSpecialTabsetCommand(SpecialTabsetIdent.HELP, TabsetType.SPECIAL))
-        } else if (FeatureIdent.IGNORE.toLowerCase() === feature) {
-          //useSuggestionsStore().removeSuggestion(StaticSuggestionIdent.TRY_TAB_DETAILS_FEATURE)
-          useCommandExecutor().executeFromUi(new CreateSpecialTabsetCommand(SpecialTabsetIdent.IGNORE, TabsetType.SPECIAL))
-        }
-        sendMsg('feature-activated', {feature: feature})
-      }
+      // if (FeatureIdent.SPACES.toLowerCase() === feature) {
+      //   useSuggestionsStore().inactivateSuggestion(Suggestion.getStaticSuggestion(StaticSuggestionIdent.TRY_SPACES_FEATURE))
+      // }
+      // if (FeatureIdent.BACKUP.toLowerCase() === feature) {
+      //   useCommandExecutor().executeFromUi(new CreateSpecialTabsetCommand(SpecialTabsetIdent.BACKUP, TabsetType.SPECIAL))
+      // }
+      // if (FeatureIdent.HELP.toLowerCase() === feature) {
+      //   useCommandExecutor().executeFromUi(new CreateSpecialTabsetCommand(SpecialTabsetIdent.HELP, TabsetType.SPECIAL))
+      // } else if (FeatureIdent.IGNORE.toLowerCase() === feature) {
+      //   //useSuggestionsStore().removeSuggestion(StaticSuggestionIdent.TRY_TAB_DETAILS_FEATURE)
+      //   useCommandExecutor().executeFromUi(new CreateSpecialTabsetCommand(SpecialTabsetIdent.IGNORE, TabsetType.SPECIAL))
+      // }
+      sendMsg('feature-activated', {feature: feature})
     }
-  })
+  }
 
   function deactivateRecursive(feature: string) {
     console.log("deactivate recursive: ", feature)
@@ -126,6 +121,7 @@ export const useFeaturesStore = defineStore('features', () => {
 
   return {
     initialize,
+    activeFeatures,
     hasFeature,
     activateFeature,
     deactivateFeature
