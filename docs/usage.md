@@ -8,7 +8,8 @@
   </span>
 ```
 
-The enum FeatureIdent is provided by the hosting application (e.g. tabsets.net)
+The enum FeatureIdent is provided by the hosting application (e.g. tabsets.net), defined
+in src/models/FeatureIdent.ts:
 
 ```typescript
 export enum FeatureIdent {
