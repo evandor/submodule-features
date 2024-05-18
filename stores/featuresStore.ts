@@ -7,6 +7,17 @@ import {useUtils} from "src/services/Utils";
 
 const {sendMsg} = useUtils()
 
+/**
+ * This store is defined here, but referenced via a symbolic link in "/src/stores", created like this from the
+ * src/stores directory:
+ *
+ * ln -s ../../src/features/stores/featuresStore.ts linkedFeaturesStore.
+ *
+ * Every reference in other files should always point to the linkedFeaturesStore, e.g. you should not have imports
+ * pointing to "src/features/stores".
+ *
+ * See: https://github.com/quasarframework/quasar/discussions/17209
+ */
 export const useFeaturesStore = defineStore('features', () => {
 
   let storage = null as unknown as FeaturesPersistence
