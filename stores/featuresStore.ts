@@ -5,7 +5,6 @@ import {AppFeatures, FeatureIdent} from "src/models/AppFeatures";
 import {useTabsetService} from "src/services/TabsetService2";
 import {useUtils} from "src/services/Utils";
 
-const {sendMsg} = useUtils()
 
 /**
  * This store is defined here, but referenced via a symbolic link in "/src/stores", created like this from the
@@ -19,6 +18,8 @@ const {sendMsg} = useUtils()
  * See: https://github.com/quasarframework/quasar/discussions/17209
  */
 export const useFeaturesStore = defineStore('features', () => {
+
+  const {sendMsg} = useUtils()
 
   let storage = null as unknown as FeaturesPersistence
 
