@@ -1,9 +1,9 @@
 import {defineStore} from "pinia";
 import {computed, ref} from "vue";
 import FeaturesPersistence from "src/features/persistence/FeaturesPersistence";
-import {AppFeatures, FeatureIdent} from "src/models/AppFeatures";
-import {useTabsetService} from "src/services/TabsetService2";
 import {useUtils} from "src/services/Utils";
+import {FeatureIdent} from "src/models/AppFeature";
+import {AppFeatures} from "src/models/AppFeatures";
 
 
 /**
@@ -86,13 +86,13 @@ export const useFeaturesStore = defineStore('features', () => {
     //console.log("deactivating normal feature", feature)
     const index = activeFeatures.value.indexOf(feature)
     if (index >= 0) {
-      if (FeatureIdent.HELP.toLowerCase() === feature) {
-        useTabsetService().deleteTabset("HELP")
-        // Notify.create({
-        //     color: 'warning',
-        //     message: "The Help pages have been deleted"
-        // })
-      }
+      // if (FeatureIdent.HELP.toLowerCase() === feature) {
+      //   useTabsetService().deleteTabset("HELP")
+      //   // Notify.create({
+      //   //     color: 'warning',
+      //   //     message: "The Help pages have been deleted"
+      //   // })
+      // }
       activeFeatures.value.splice(index, 1)
       storage.saveActiveFeatures(activeFeatures.value)
       sendMsg('feature-deactivated', {feature: feature})
@@ -118,10 +118,10 @@ export const useFeaturesStore = defineStore('features', () => {
 
   const hasFeature = computed(() => {
     return (feature: FeatureIdent): boolean => {
-      if (feature === FeatureIdent.SIDE_PANEL) {
-        // @ts-ignore
-        return chrome.sidePanel !== undefined
-      }
+      // if (feature === FeatureIdent.SIDE_PANEL) {
+      //   // @ts-ignore
+      //   return chrome.sidePanel !== undefined
+      // }
       const appFeature = new AppFeatures().getFeature(feature)
       if (appFeature) {
         return activeFeatures.value.indexOf(feature.toLowerCase()) >= 0
