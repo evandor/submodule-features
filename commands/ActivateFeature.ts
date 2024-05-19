@@ -1,7 +1,7 @@
 import Command from "src/domain/Command";
 import {Feature} from "src/features/models/Feature";
 import {ExecutionResult} from "src/domain/ExecutionResult";
-import {useFeaturesStore} from "stores/linkedFeaturesStore";
+import {useFeaturesStore} from "src/features/stores/featuresStore";
 
 export class ActivateFeatureCommand implements Command<any> {
 

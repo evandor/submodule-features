@@ -78,7 +78,7 @@ import _ from "lodash"
 import {useSettingsStore} from "src/stores/settingsStore";
 import {useQuasar} from "quasar";
 import {Feature} from "src/features/models/Feature";
-import {useFeaturesStore} from "stores/linkedFeaturesStore";
+import {useFeaturesStore} from "src/features/stores/featuresStore";
 import {FeatureIdent, FeatureType} from "src/models/FeatureIdent";
 import {AppFeatures} from "src/models/AppFeatures";
 
