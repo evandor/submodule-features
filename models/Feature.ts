@@ -6,14 +6,18 @@ export class Feature {
 
   public activateCommands: Array<Command<any>> = []
   public deactivateCommands: Array<Command<any>> = []
+  public imageWidth: string = "20";
 
   constructor(
     public ident: string,
     public type: string,
     public name: string,
+    public description: string,
     public icon: string,
+    public image: string,
     public useIn: string[],
-    public requires: string[] = []
+    public requires: string[] = [],
+    public needsAccount: boolean = false
   ) {
     this.activateCommands = [new ActivateFeatureCommand(this)]
     this.deactivateCommands = [new DeactivateFeatureCommand(this)]
@@ -27,5 +31,10 @@ export class Feature {
   setDeactivateCommands(cmds: Array<Command<any>>): Feature {
     this.deactivateCommands = cmds.concat(this.deactivateCommands)
     return this
+  }
+
+  setImageWidth(width: string) {
+    this.imageWidth = width
+    return this;
   }
 }
