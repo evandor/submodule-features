@@ -6,7 +6,7 @@ export class Feature {
 
   public activateCommands: Array<Command<any>> = []
   public deactivateCommands: Array<Command<any>> = []
-  public imageWidth: string = "20";
+  public imageWidth: string = "250px";
 
   constructor(
     public ident: string,
