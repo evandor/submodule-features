@@ -75,6 +75,8 @@ export const useFeaturesStore = defineStore('features', () => {
       //   useCommandExecutor().executeFromUi(new CreateSpecialTabsetCommand(SpecialTabsetIdent.IGNORE, TabsetType.SPECIAL))
       // }
       sendMsg('feature-activated', {feature: feature})
+    } else if (!storage) {
+      console.warn("storage is not set in featuresStore!")
     }
   }
 

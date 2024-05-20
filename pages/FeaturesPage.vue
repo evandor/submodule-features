@@ -221,11 +221,11 @@ onMounted(() => {
 //   permissions: ['contextMenus']
 // })
 
-text.set(FeatureIdent.TABS_AS_TREE.toLowerCase(), {
-  name: 'Tabs as Tree',
-  description: 'Show a tree view of your tabs',
-  permissions: []
-})
+// text.set(FeatureIdent.TABS_AS_TREE.toLowerCase(), {
+//   name: 'Tabs as Tree',
+//   description: 'Show a tree view of your tabs',
+//   permissions: []
+// })
 
 watchEffect(() => {
     feature.value = route.params.feature as string
