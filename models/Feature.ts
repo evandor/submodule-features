@@ -1,4 +1,4 @@
-import Command from "src/domain/Command";
+import Command from "src/core/domain/Command";
 import {ActivateFeatureCommand} from "src/features/commands/ActivateFeature";
 import {DeactivateFeatureCommand} from "src/features/commands/DeactivateFeature";
 
