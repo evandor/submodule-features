@@ -131,22 +131,22 @@
 </template>
 
 <script setup lang="ts">
-import {onMounted, ref, watch, watchEffect} from 'vue'
+import {onMounted, ref, watchEffect} from 'vue'
 import {useRoute, useRouter} from "vue-router";
-import {Notify, useQuasar} from "quasar";
+import {Notify} from "quasar";
 import {useCommandExecutor} from "src/services/CommandExecutor";
 import InfoMessageWidget from "components/widgets/InfoMessageWidget.vue";
 import {DrawerTabs, useUiStore} from "src/stores/uiStore";
 import OpenRightDrawerWidget from "components/widgets/OpenRightDrawerWidget.vue";
 import Analytics from "src/utils/google-analytics";
 import Command from "src/domain/Command";
-import NavigationService from "src/services/NavigationService";
 import {useUtils} from "src/services/Utils";
 import {useAuthStore} from "stores/authStore";
 import {Feature} from "src/features/models/Feature";
 import {useFeaturesStore} from "src/features/stores/featuresStore";
 import {FeatureIdent, FeatureType} from "src/models/FeatureIdent";
 import {AppFeatures} from "src/models/AppFeatures";
+import NavigationService from "src/services/NavigationService";
 
 const route = useRoute();
 const router = useRouter();
@@ -165,67 +165,6 @@ const text: Map<string, object> = new Map()
 onMounted(() => {
   Analytics.firePageViewEvent('FeaturesPage', document.location.href);
 })
-
-
-
-// text.set(FeatureIdent.THUMBNAILS.toLowerCase(), {
-//   experimental: false,
-//   name: 'Thumbnails',
-//   img: 'thumbnails.png',
-//   description: 'This extension can create thumbnails of the tabs you visit, so that they can presented in an more appealing way. ' +
-//       'Please note that only tabs that you visit (or revisit) after the activation of this feature are going to have thumbnails.',
-//   permissions: ['thumbnails']
-// })
-
-// text.set(FeatureIdent.DYNAMIC.toLowerCase(), {
-//   experimental: true,
-//   name: 'Dynamic Tabsets',
-//   description: 'The idea is to provide you with tabset data which is defined outside the scope of this extension - e.g. defined by a website like wikipedia. ' +
-//     'For now, there is only one example; the wikipedia "List of most visited websites" is added to your tabsets as a readonly tab.',
-//   permissions: []
-// })
-
-
-// text.set(FeatureIdent.HELP.toLowerCase(), {
-//   name: 'Help Pages',
-//   description: 'A readonly Tabset will be created containing the links to Tabsets Help',
-//   permissions: []
-// })
-
-// text.set(FeatureIdent.SCHEDULED.toLowerCase(), {
-//   planned: true,
-//   name: 'Schedule Tabs Support',
-//   description: 'Be reminded about tabs you want to revisit',
-//   permissions: []
-// })
-// text.set(FeatureIdent.OLD_TABS.toLowerCase(), {
-//   planned: true,
-//   name: 'Old Tabs View',
-//   description: 'Get a list of old tabs to decide which ones to keep.',
-//   permissions: []
-// })
-// text.set(FeatureIdent.NEWEST_TABS.toLowerCase(), {
-//   name: 'Newest Tabs',
-//   img: 'newest_tabs.png',
-//   description: 'Activate a view to get quick access to your 100 newest tabs',
-//   permissions: []
-// })
-// text.set(FeatureIdent.CATEGORIZATION.toLowerCase(), {
-//   name: 'Tabsets Categorization',
-//   description: 'Categorize your tabsets automatically',
-//   permissions: []
-// })
-// text.set(FeatureIdent.PAGE_MARKER.toLowerCase(), {
-//   name: 'Page Marker',
-//   description: 'Highlight parts of a page and add notes',
-//   permissions: ['contextMenus']
-// })
-
-// text.set(FeatureIdent.TABS_AS_TREE.toLowerCase(), {
-//   name: 'Tabs as Tree',
-//   description: 'Show a tree view of your tabs',
-//   permissions: []
-// })
 
 watchEffect(() => {
     feature.value = route.params.feature as string
