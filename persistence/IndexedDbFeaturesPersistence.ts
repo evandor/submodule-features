@@ -1,6 +1,7 @@
 import {IDBPDatabase, openDB, deleteDB} from "idb";
 import FeaturesPersistence from "src/features/persistence/FeaturesPersistence";
 
+// TODO not needed (?)
 class IndexedDbFeaturesPersistence implements FeaturesPersistence {
 
   private STORE_IDENT = 'features';

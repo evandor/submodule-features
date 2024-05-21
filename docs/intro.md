@@ -2,5 +2,8 @@
 
 used as submodule in
 
-* tabsets
+* [tabsets](https://tabsets.net)
+* bookmrk
 * ...
+
+Tests are found in the tabsets project.

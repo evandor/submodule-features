@@ -4,6 +4,9 @@ import FeaturesPersistence from "src/features/persistence/FeaturesPersistence";
 import {useUtils} from "src/services/Utils";
 import {AppFeatures} from "src/models/AppFeatures";
 import {FeatureIdent} from "src/models/FeatureIdent";
+import {SyncType} from "stores/appStore";
+import {useDB} from "src/services/usePersistenceService";
+import {QVueGlobals, useQuasar} from "quasar";
 
 
 /**
@@ -31,9 +34,18 @@ export const useFeaturesStore = defineStore('features', () => {
   // related to tabsets permissions
   const activeFeatures = ref<string[]>( [])
 
-  async function initialize(ps: FeaturesPersistence) {
-    console.debug(" ...initializing features store", ps?.getServiceName())
-    storage = ps
+  async function initialize(syncType: SyncType, isAuthenticated: boolean, quasar: QVueGlobals | undefined = undefined) {
+
+    if (!isAuthenticated) {
+      storage = useDB(quasar).featuresLocalStorage
+    } else if (syncType === SyncType.FIRESTORE) {
+      storage = useDB(quasar).featuresFirestoreDb
+    } else {
+      storage = useDB(quasar).featuresLocalStorage
+    }
+
+    console.debug(" ...initializing features store", storage?.getServiceName())
+    //storage = ps
     await storage.init()
     await load()
   }
