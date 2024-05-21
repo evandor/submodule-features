@@ -9,17 +9,6 @@ import {useDB} from "src/services/usePersistenceService";
 import {QVueGlobals, useQuasar} from "quasar";
 
 
-/**
- * This store is defined here, but referenced via a symbolic link in "/src/stores", created like this from the
- * src/stores directory:
- *
- * ln -s ../../src/features/stores/featuresStore.ts linkedFeaturesStore.
- *
- * Every reference in other files should always point to the linkedFeaturesStore, e.g. you should not have imports
- * pointing to "src/features/stores".
- *
- * See: https://github.com/quasarframework/quasar/discussions/17209
- */
 export const useFeaturesStore = defineStore('features', () => {
 
   const {sendMsg} = useUtils()
@@ -34,18 +23,9 @@ export const useFeaturesStore = defineStore('features', () => {
   // related to tabsets permissions
   const activeFeatures = ref<string[]>( [])
 
-  async function initialize(syncType: SyncType, isAuthenticated: boolean, quasar: QVueGlobals | undefined = undefined) {
-
-    if (!isAuthenticated) {
-      storage = useDB(quasar).featuresLocalStorage
-    } else if (syncType === SyncType.FIRESTORE) {
-      storage = useDB(quasar).featuresFirestoreDb
-    } else {
-      storage = useDB(quasar).featuresLocalStorage
-    }
-
-    console.debug(" ...initializing features store", storage?.getServiceName())
-    //storage = ps
+  async function initialize(persistence: FeaturesPersistence) {
+    console.debug(" ...initializing features store", persistence?.getServiceName())
+    storage = persistence
     await storage.init()
     await load()
   }
@@ -70,7 +50,13 @@ export const useFeaturesStore = defineStore('features', () => {
     console.log("activate feature", feature, activeFeatures.value)
     if (storage && activeFeatures.value.indexOf(feature) < 0) {
       console.log("===<", activeFeatures.value)
-      activeFeatures.value.push(feature)
+
+      // check against enum
+      const featureIdent = FeatureIdent[feature.toUpperCase() as keyof typeof FeatureIdent]
+      if (!featureIdent) {
+        throw new Error(`unknown feature called ${feature}`)
+      }
+      activeFeatures.value.push(feature.toLowerCase())
       console.log("===>", activeFeatures.value)
       storage.saveActiveFeatures(activeFeatures.value)
 
