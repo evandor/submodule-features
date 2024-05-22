@@ -2,7 +2,6 @@ import {useAuthStore} from "stores/authStore";
 import {collection, deleteDoc, doc, getDoc, getDocs, setDoc, updateDoc} from "firebase/firestore";
 import FirebaseServices from "src/services/firebase/FirebaseServices";
 import FeaturesPersistence from "src/features/persistence/FeaturesPersistence";
-import _ from "lodash"
 import {uid} from "quasar";
 
 const STORE_IDENT = 'features';
