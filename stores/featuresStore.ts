@@ -1,7 +1,7 @@
 import {defineStore} from "pinia";
 import {computed, ref} from "vue";
 import FeaturesPersistence from "src/features/persistence/FeaturesPersistence";
-import {useUtils} from "src/services/Utils";
+import {useUtils} from "src/core/services/Utils";
 import {AppFeatures} from "src/models/AppFeatures";
 import {FeatureIdent} from "src/models/FeatureIdent";
 import {SyncType} from "stores/appStore";

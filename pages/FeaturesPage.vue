@@ -140,7 +140,7 @@ import {DrawerTabs, useUiStore} from "src/stores/uiStore";
 import OpenRightDrawerWidget from "components/widgets/OpenRightDrawerWidget.vue";
 import Analytics from "src/utils/google-analytics";
 import Command from "src/core/domain/Command";
-import {useUtils} from "src/services/Utils";
+import {useUtils} from "src/core/services/Utils";
 import {useAuthStore} from "stores/authStore";
 import {Feature} from "src/features/models/Feature";
 import {useFeaturesStore} from "src/features/stores/featuresStore";
