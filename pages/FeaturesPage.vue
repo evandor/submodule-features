@@ -138,7 +138,7 @@ import {useCommandExecutor} from "src/core/services/CommandExecutor";
 import InfoMessageWidget from "components/widgets/InfoMessageWidget.vue";
 import {DrawerTabs, useUiStore} from "src/stores/uiStore";
 import OpenRightDrawerWidget from "components/widgets/OpenRightDrawerWidget.vue";
-import Analytics from "src/utils/google-analytics";
+import Analytics from "src/core/utils/google-analytics";
 import Command from "src/core/domain/Command";
 import {useUtils} from "src/core/services/Utils";
 import {useAuthStore} from "stores/authStore";
