@@ -7,20 +7,20 @@ import {useFeaturesStore} from "../stores/featuresStore";
 export class DeactivateFeatureCommand implements Command<any> {
 
   constructor(
-    public feature: Feature) {
+    public featureIdentifier: string) {
   }
 
 
   async execute(): Promise<ExecutionResult<any>> {
-    useFeaturesStore().deactivateFeature(this.feature.ident.toLowerCase())
+    useFeaturesStore().deactivateFeature(this.featureIdentifier.toLowerCase())
     return Promise.resolve(
       new ExecutionResult(
         "done",
-        `Feature ${this.feature.ident.toLowerCase()} was deactivated`))
+        `Feature ${this.featureIdentifier.toLowerCase()} was deactivated`))
   }
 
 }
 
 DeactivateFeatureCommand.prototype.toString = function cmdToString() {
-  return `DeactivateFeatureCommand: {feature=${this.feature.ident}}`;
+  return `DeactivateFeatureCommand: {feature=${this.featureIdentifier}}`;
 };

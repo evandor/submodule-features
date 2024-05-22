@@ -6,19 +6,19 @@ import {useFeaturesStore} from "src/features/stores/featuresStore";
 export class ActivateFeatureCommand implements Command<any> {
 
   constructor(
-    public feature: Feature) {
+    public featureIdentifier: string) {
   }
 
   async execute(): Promise<ExecutionResult<any>> {
-    useFeaturesStore().activateFeature(this.feature.ident.toLowerCase())
+    useFeaturesStore().activateFeature(this.featureIdentifier.toLowerCase())
     return Promise.resolve(
       new ExecutionResult(
         "done",
-        `Feature ${this.feature.ident.toLowerCase()} was activated`))
+        `Feature ${this.featureIdentifier.toLowerCase()} was activated`))
   }
 
 }
 
 ActivateFeatureCommand.prototype.toString = function cmdToString() {
-  return `ActivateFeatureCommand: {feature=${this.feature.ident}}`;
+  return `ActivateFeatureCommand: {feature=${this.featureIdentifier}}`;
 };

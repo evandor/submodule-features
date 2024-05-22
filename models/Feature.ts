@@ -19,8 +19,8 @@ export class Feature {
     public requires: string[] = [],
     public needsAccount: boolean = false
   ) {
-    this.activateCommands = [new ActivateFeatureCommand(this)]
-    this.deactivateCommands = [new DeactivateFeatureCommand(this)]
+    this.activateCommands = [new ActivateFeatureCommand(this.ident)]
+    this.deactivateCommands = [new DeactivateFeatureCommand(this.ident)]
   }
 
   setActivateCommands(cmds: Array<Command<any>>): Feature {

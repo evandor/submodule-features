@@ -7,7 +7,7 @@
   <q-list>
     <q-item
       v-for="f in featuresByType(FeatureType.RECOMMENDED)"
-      clickable v-ripple :dense="useSettingsStore().isEnabled('dev')"
+      clickable v-ripple :dense="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
       :active="f === selected2"
       :disable="wrongMode(f)"
       @click="showFeature2(f)">
@@ -30,7 +30,7 @@
   <q-list>
     <q-item
       v-for="f in featuresByType(FeatureType.OPTIONAL)"
-      clickable v-ripple :dense="useSettingsStore().isEnabled('dev')"
+      clickable v-ripple :dense="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
       :active="f === selected2"
       :disable="wrongMode(f)"
       @click="showFeature2(f)">
@@ -45,14 +45,14 @@
     </q-item>
   </q-list>
 
-  <div class="q-ma-md" v-if="useSettingsStore().isEnabled('dev')">
+  <div class="q-ma-md" v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)">
     <b>Experimental Features</b>
   </div>
 
-  <q-list v-if="useSettingsStore().isEnabled('dev')">
+  <q-list v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)">
     <q-item
       v-for="f in featuresByType(FeatureType.EXPERIMENTAL)"
-      clickable v-ripple :dense="useSettingsStore().isEnabled('dev')"
+      clickable v-ripple :dense="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
       :active="f === selected2"
       :disable="wrongMode(f)"
       @click="showFeature2(f)">
