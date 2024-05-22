@@ -41,7 +41,7 @@
     </div>
 
     <div class="col text-right q-mr-xl">
-      <div v-if="!appFeature?.planned">
+      <div>
         <q-btn v-if="!hasFeature()" color="warning"
                label="Activate Feature" @click="grant(feature)" :disable="needsAccountAndUserNotLoggedIn()"/>
         <q-btn v-else
@@ -77,7 +77,7 @@
 
     <div class="col-12 q-my-md">
       <div v-html="appFeature?.description"></div>
-      <div v-if="hasFeature()" class="text-primary q-mt-md">{{ appFeature?.activatedMsg }}</div>
+      <div v-if="hasFeature()" class="text-primary q-mt-md"> appFeature?.activatedMsg </div>
     </div>
 
     <div class="col-12 q-my-sm" v-if="getDependentFeatures(feature).length > 0 && !hasFeature()">
@@ -107,16 +107,16 @@
       </div>
     </div>
 
-    <template v-if="appFeature?.more">
-      <div class="col-12 q-my-sm">
-        <div class="text-subtitle2">More Info</div>
-      </div>
+<!--    <template v-if="appFeature?.more">-->
+<!--      <div class="col-12 q-my-sm">-->
+<!--        <div class="text-subtitle2">More Info</div>-->
+<!--      </div>-->
 
-      <div class="col-12 q-my-md">
-        <div> click <a class="cursor-pointer text-blue-6"
-                       @click="NavigationService.openOrCreateTab([appFeature?.more])">here</a></div>
-      </div>
-    </template>
+<!--      <div class="col-12 q-my-md">-->
+<!--        <div> click <a class="cursor-pointer text-blue-6"-->
+<!--                       @click="NavigationService.openOrCreateTab([appFeature?.more])">here</a></div>-->
+<!--      </div>-->
+<!--    </template>-->
 
     <div class="col-12 q-my-sm">
       <div class="text-subtitle2">Permissions</div>
