@@ -4,10 +4,6 @@ import FeaturesPersistence from "src/features/persistence/FeaturesPersistence";
 import {useUtils} from "src/core/services/Utils";
 import {AppFeatures} from "src/models/AppFeatures";
 import {FeatureIdent} from "src/models/FeatureIdent";
-import {SyncType} from "stores/appStore";
-import {useDB} from "src/services/usePersistenceService";
-import {QVueGlobals, useQuasar} from "quasar";
-
 
 export const useFeaturesStore = defineStore('features', () => {
 

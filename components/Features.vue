@@ -75,7 +75,6 @@
 import {ref} from "vue";
 import {useRoute, useRouter} from "vue-router";
 import _ from "lodash"
-import {useSettingsStore} from "src/stores/settingsStore";
 import {useQuasar} from "quasar";
 import {Feature} from "src/features/models/Feature";
 import {useFeaturesStore} from "src/features/stores/featuresStore";
@@ -108,7 +107,7 @@ const featuresByType = (type: FeatureType) =>
 //@ts-ignore
 const appVersion = import.meta.env.PACKAGE_VERSION
 
-const iconColor2 = (f: Feature) => useFeaturesStore().hasFeature(f.ident) ? 'green' : 'grey'
+const iconColor2 = (f: Feature) => useFeaturesStore().hasFeature(f) ? 'green' : 'grey'
 
 const showFeature2 = (f: Feature) => {
   selected2.value = f
