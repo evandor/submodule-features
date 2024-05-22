@@ -92,8 +92,9 @@ const featuresByType = (type: FeatureType) =>
     const typeAndModeMatch = f.type === type && !wrongMode(f)
     if (f.requires.length > 0) {
       let missingRequirement = false
-      f.requires.forEach((requirement: FeatureIdent) => {
-        if (!useFeaturesStore().hasFeature(requirement)) {
+      f.requires.forEach((requirement: string) => {
+        // if (!useFeaturesStore().hasFeature(requirement)) {
+        if (useFeaturesStore().activeFeatures.indexOf(requirement) === -1) {
           missingRequirement = true
         }
       })
@@ -107,7 +108,7 @@ const featuresByType = (type: FeatureType) =>
 //@ts-ignore
 const appVersion = import.meta.env.PACKAGE_VERSION
 
-const iconColor2 = (f: Feature) => useFeaturesStore().hasFeature(f) ? 'green' : 'grey'
+const iconColor2 = (f: Feature) => useFeaturesStore().activeFeatures.indexOf(f.ident) >= 0 ? 'green' : 'grey'
 
 const showFeature2 = (f: Feature) => {
   selected2.value = f
