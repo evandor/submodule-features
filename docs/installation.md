@@ -13,4 +13,10 @@ git submodule add -b main https://github.com/evandor/submodule-features.git src/
 
 ## Branches
 
-currently, there is only 'main'
+### main
+
+the default branch, used e.g. in tabsets
+
+### localstorage
+
+a branch without firebase, to be used in local-only environments like bookmrkx
