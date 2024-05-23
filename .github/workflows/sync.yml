@@ -1,34 +1,34 @@
-name: Merge from chrome-extension to firefox, edge and opera
+name: Merge from main to localstorage
 on:
   push:
     branches:
-      - 'chrome-extension'
+      - 'main'
 jobs:
-  sync-branch-firefox:
+  sync-branch-localstorage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
 
-      - name: Merge chrome-extension -> firefox-extension
+      - name: Merge main -> localstorage
         uses: devmasx/merge-branch@v1.3.1
         with:
           type: now
-          from_branch: chrome-extension
-          target_branch: firefox-extension
+          from_branch: main
+          target_branch: localstorage
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-  sync-branch-edge:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-
-      - name: Merge chrome-extension -> edge-extension
-        uses: devmasx/merge-branch@v1.3.1
-        with:
-          type: now
-          from_branch: chrome-extension
-          target_branch: edge-extension
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+#  sync-branch-edge:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@master
+#
+#      - name: Merge chrome-extension -> edge-extension
+#        uses: devmasx/merge-branch@v1.3.1
+#        with:
+#          type: now
+#          from_branch: chrome-extension
+#          target_branch: edge-extension
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
 
 #  sync-branch-opera:
 #    runs-on: ubuntu-latest
