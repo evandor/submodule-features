@@ -207,7 +207,6 @@ watchEffect(() => {
 const hasFeature = () => {
   if (appFeature.value && appFeature.value.ident) {
     const ident: FeatureIdent = FeatureIdent[appFeature.value.ident as keyof typeof FeatureIdent]
-    console.log("===>", ident, useFeaturesStore().hasFeature(ident))
     return useFeaturesStore().hasFeature(ident)
   }
   return false;

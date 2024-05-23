@@ -94,7 +94,7 @@ const featuresByType = (type: FeatureType) =>
       let missingRequirement = false
       f.requires.forEach((requirement: string) => {
         // if (!useFeaturesStore().hasFeature(requirement)) {
-        if (useFeaturesStore().activeFeatures.indexOf(requirement) === -1) {
+        if (useFeaturesStore().activeFeatures.indexOf(requirement.toLowerCase()) === -1) {
           missingRequirement = true
         }
       })
@@ -108,7 +108,9 @@ const featuresByType = (type: FeatureType) =>
 //@ts-ignore
 const appVersion = import.meta.env.PACKAGE_VERSION
 
-const iconColor2 = (f: Feature) => useFeaturesStore().activeFeatures.indexOf(f.ident) >= 0 ? 'green' : 'grey'
+const iconColor2 = (f: Feature) => {
+  return useFeaturesStore().activeFeatures.indexOf(f.ident.toLowerCase()) >= 0 ? 'green' : 'grey'
+}
 
 const showFeature2 = (f: Feature) => {
   selected2.value = f

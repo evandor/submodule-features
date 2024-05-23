@@ -53,7 +53,6 @@ export const useFeaturesStore = defineStore('features', () => {
         throw new Error(`unknown feature called ${feature}`)
       }
       activeFeatures.value.push(feature.toLowerCase())
-      console.log("===>", activeFeatures.value)
       storage.saveActiveFeatures(activeFeatures.value)
 
       // if (FeatureIdent.SPACES.toLowerCase() === feature) {
