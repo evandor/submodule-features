@@ -45,7 +45,7 @@ export const useFeaturesStore = defineStore('features', () => {
   function activateFeature(feature: string) {
     console.log("activate feature", feature, activeFeatures.value)
     if (storage && activeFeatures.value.indexOf(feature) < 0) {
-      console.log("===<", activeFeatures.value)
+      // console.log("===<", activeFeatures.value)
 
       // check against enum
       const featureIdent = FeatureIdent[feature.toUpperCase() as keyof typeof FeatureIdent]
