@@ -20,7 +20,7 @@ export const useFeaturesStore = defineStore('features', () => {
   const activeFeatures = ref<string[]>( [])
 
   async function initialize(persistence: FeaturesPersistence) {
-    console.debug(" ...initializing features store", persistence?.getServiceName())
+    console.log(` ...initializing featuresStore (${persistence?.getServiceName()})`)
     storage = persistence
     await storage.init()
     await load()
@@ -28,7 +28,7 @@ export const useFeaturesStore = defineStore('features', () => {
 
   async function load() {
     activeFeatures.value = await storage.getActiveFeatures()
-    console.log("loaded from storage", activeFeatures.value)
+    //console.log("loaded from storage", activeFeatures.value)
     // if (process.env.MODE !== 'bex') {
     //   return
     // }
