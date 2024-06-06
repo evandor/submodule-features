@@ -32,7 +32,7 @@ export const useFeaturesStore = defineStore('features', () => {
     // if (process.env.MODE !== 'bex') {
     //   return
     // }
-    if (chrome) { // issues in vitest where chrome is not defined
+    if (chrome && chrome.permissions) { // issues in vitest where chrome is not defined
       // @ts-ignore
       permissions.value = await chrome.permissions.getAll()
       if (permissions.value) {
