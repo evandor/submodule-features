@@ -286,7 +286,7 @@ const needsAccountAndUserNotLoggedIn = (): boolean => {
   if (!appFeature.value?.needsAccount) {
     return false
   }
-  return !useAuthStore().isAuthenticated()
+  return !useAuthStore().isAuthenticated
 }
 
 </script>
