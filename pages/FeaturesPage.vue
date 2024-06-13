@@ -135,7 +135,7 @@ import {onMounted, ref, watchEffect} from 'vue'
 import {useRoute, useRouter} from "vue-router";
 import {Notify} from "quasar";
 import {useCommandExecutor} from "src/core/services/CommandExecutor";
-import InfoMessageWidget from "components/widgets/InfoMessageWidget.vue";
+import InfoMessageWidget from "src/ui/widgets/InfoMessageWidget.vue";
 import {DrawerTabs, useUiStore} from "src/ui/stores/uiStore";
 import OpenRightDrawerWidget from "components/widgets/OpenRightDrawerWidget.vue";
 import Analytics from "src/core/utils/google-analytics";
