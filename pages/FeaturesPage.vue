@@ -136,7 +136,7 @@ import {useRoute, useRouter} from "vue-router";
 import {Notify} from "quasar";
 import {useCommandExecutor} from "src/core/services/CommandExecutor";
 import InfoMessageWidget from "components/widgets/InfoMessageWidget.vue";
-import {DrawerTabs, useUiStore} from "src/stores/uiStore";
+import {DrawerTabs, useUiStore} from "src/ui/stores/uiStore";
 import OpenRightDrawerWidget from "components/widgets/OpenRightDrawerWidget.vue";
 import Analytics from "src/core/utils/google-analytics";
 import Command from "src/core/domain/Command";
