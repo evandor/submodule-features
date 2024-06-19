@@ -21,7 +21,7 @@ class FirestoreFeaturesPersistence implements FeaturesPersistence {
   }
 
   async init() {
-    //console.log(" ...initializing GitPersistenceService")
+    //console.debug(" ...initializing GitPersistenceService")
     //this.indexedDB = useDB(undefined).db as typeof IndexedDbPersistenceService
     return Promise.resolve("")
   }
