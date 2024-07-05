@@ -76,7 +76,6 @@ export const useFeaturesStore = defineStore('features', () => {
   function deactivateRecursive(feature: string) {
     console.log("deactivate recursive: ", feature)
     const deactivatedIdent = feature.toUpperCase() as FeatureIdent
-    const appFeature = new AppFeatures().getFeature(deactivatedIdent)
 
     //console.log("deactivating normal feature", feature)
     const index = activeFeatures.value.indexOf(feature)
