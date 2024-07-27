@@ -1,15 +1,10 @@
+import Persistence from "src/core/persistence/Persistence";
 
-interface FeaturesPersistence {
-
-  getServiceName(): string
-
-  init(): Promise<any>
+interface FeaturesPersistence extends Persistence {
 
   getActiveFeatures(): Promise<string[]>
 
   saveActiveFeatures(val: string[]): any
-
-  compactDb(): Promise<any>
 
 }
 
