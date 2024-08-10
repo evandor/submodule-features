@@ -14,7 +14,7 @@
             </div>
             <div class="col-9">{{ title }}</div>
             <div class="col text-right">
-              <OpenRightDrawerWidget/>
+              <OpenRightDrawerWidget />
             </div>
           </div>
         </q-toolbar-title>
@@ -137,16 +137,15 @@ import {Notify} from "quasar";
 import {useCommandExecutor} from "src/core/services/CommandExecutor";
 import InfoMessageWidget from "src/ui/widgets/InfoMessageWidget.vue";
 import {DrawerTabs, useUiStore} from "src/ui/stores/uiStore";
-import OpenRightDrawerWidget from "components/widgets/OpenRightDrawerWidget.vue";
+import OpenRightDrawerWidget from "src/ui/widgets/OpenRightDrawerWidget.vue";
 import Analytics from "src/core/utils/google-analytics";
 import Command from "src/core/domain/Command";
 import {useUtils} from "src/core/services/Utils";
 import {useAuthStore} from "stores/authStore";
 import {Feature} from "src/features/models/Feature";
 import {useFeaturesStore} from "src/features/stores/featuresStore";
-import {FeatureIdent, FeatureType} from "src/models/FeatureIdent";
-import {AppFeatures} from "src/models/AppFeatures";
-import NavigationService from "src/services/NavigationService";
+import {FeatureIdent, FeatureType} from "src/app/models/FeatureIdent";
+import {AppFeatures} from "src/app/models/AppFeatures";
 
 const route = useRoute();
 const router = useRouter();
