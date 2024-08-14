@@ -2,8 +2,8 @@ import {defineStore} from "pinia";
 import {computed, ref} from "vue";
 import FeaturesPersistence from "src/features/persistence/FeaturesPersistence";
 import {useUtils} from "src/core/services/Utils";
-import {AppFeatures} from "src/models/AppFeatures";
-import {FeatureIdent} from "src/models/FeatureIdent";
+import {AppFeatures} from "src/app/models/AppFeatures";
+import {FeatureIdent} from "src/app/models/FeatureIdent";
 
 export const useFeaturesStore = defineStore('features', () => {
 

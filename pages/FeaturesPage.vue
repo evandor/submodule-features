@@ -144,8 +144,8 @@ import {useUtils} from "src/core/services/Utils";
 import {useAuthStore} from "stores/authStore";
 import {Feature} from "src/features/models/Feature";
 import {useFeaturesStore} from "src/features/stores/featuresStore";
-import {FeatureIdent, FeatureType} from "src/models/FeatureIdent";
-import {AppFeatures} from "src/models/AppFeatures";
+import {FeatureIdent, FeatureType} from "src/app/models/FeatureIdent";
+import {AppFeatures} from "src/app/models/AppFeatures";
 import NavigationService from "src/services/NavigationService";
 
 const route = useRoute();
