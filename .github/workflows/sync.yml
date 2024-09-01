@@ -1,10 +1,10 @@
-name: Merge from localstorage to main
+name: Merge from main to localstorage
 on:
   push:
     branches:
-      - 'localstorage'
+      - 'main'
 jobs:
-  sync-branch-localstorage:
+  sync-branch-main:
     runs-on: ubuntu-latest
     #    // https://github.com/devmasx/merge-branch/issues/34
     permissions:
@@ -12,10 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - name: Merge localstorage -> main
+      - name: Merge main -> localstorage
         uses: devmasx/merge-branch@v1.3.1
         with:
           type: now
-          from_branch: localstorage
-          target_branch: main
+          from_branch: main
+          target_branch: localhstorage
           github_token: ${{ secrets.GITHUB_TOKEN }}
