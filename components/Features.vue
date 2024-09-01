@@ -45,11 +45,11 @@
     </q-item>
   </q-list>
 
-  <div class="q-ma-md" v-if="useSettingsStore().isEnabled('dev')">
+  <div class="q-ma-md" v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)">
     <b>Experimental Features</b>
   </div>
 
-  <q-list v-if="useSettingsStore().isEnabled('dev')">
+  <q-list v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)">
     <q-item
       v-for="f in featuresByType(FeatureType.EXPERIMENTAL)"
       clickable v-ripple :dense="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
@@ -80,7 +80,6 @@ import {Feature} from "src/features/models/Feature";
 import {useFeaturesStore} from "src/features/stores/featuresStore";
 import {FeatureIdent, FeatureType} from "src/app/models/FeatureIdent";
 import {AppFeatures} from "src/app/models/AppFeatures";
-import {useSettingsStore} from "stores/settingsStore";
 
 const router = useRouter()
 const route = useRoute()
