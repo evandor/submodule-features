@@ -17,5 +17,5 @@ jobs:
         with:
           type: now
           from_branch: main
-          target_branch: localhstorage
+          target_branch: localstorage
           github_token: ${{ secrets.GITHUB_TOKEN }}
