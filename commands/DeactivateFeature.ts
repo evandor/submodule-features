@@ -1,6 +1,5 @@
 import Command from "src/core/domain/Command";
 import {ExecutionResult} from "src/core/domain/ExecutionResult";
-import {Feature} from "../models/Feature";
 import {useFeaturesStore} from "../stores/featuresStore";
 
 

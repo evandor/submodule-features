@@ -159,8 +159,6 @@ const feature = ref(null as unknown as string)
 const appFeature = ref<Feature | undefined>(undefined)
 const featureActive = ref(false)
 
-const text: Map<string, object> = new Map()
-
 onMounted(() => {
   Analytics.firePageViewEvent('FeaturesPage', document.location.href);
 })
