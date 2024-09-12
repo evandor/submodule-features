@@ -14,7 +14,7 @@
             </div>
             <div class="col-9">{{ title }}</div>
             <div class="col text-right">
-              <OpenRightDrawerWidget />
+              <OpenRightDrawerWidget/>
             </div>
           </div>
         </q-toolbar-title>
@@ -77,7 +77,7 @@
 
     <div class="col-12 q-my-md">
       <div v-html="appFeature?.description"></div>
-      <div v-if="hasFeature()" class="text-primary q-mt-md"> appFeature?.activatedMsg </div>
+      <div v-if="hasFeature()" class="text-primary q-mt-md"> Feature is enabled </div>
     </div>
 
     <div class="col-12 q-my-sm" v-if="getDependentFeatures(feature).length > 0 && !hasFeature()">
@@ -107,24 +107,24 @@
       </div>
     </div>
 
-<!--    <template v-if="appFeature?.more">-->
-<!--      <div class="col-12 q-my-sm">-->
-<!--        <div class="text-subtitle2">More Info</div>-->
-<!--      </div>-->
+    <!--    <template v-if="appFeature?.more">-->
+    <!--      <div class="col-12 q-my-sm">-->
+    <!--        <div class="text-subtitle2">More Info</div>-->
+    <!--      </div>-->
 
-<!--      <div class="col-12 q-my-md">-->
-<!--        <div> click <a class="cursor-pointer text-blue-6"-->
-<!--                       @click="NavigationService.openOrCreateTab([appFeature?.more])">here</a></div>-->
-<!--      </div>-->
-<!--    </template>-->
+    <!--      <div class="col-12 q-my-md">-->
+    <!--        <div> click <a class="cursor-pointer text-blue-6"-->
+    <!--                       @click="NavigationService.openOrCreateTab([appFeature?.more])">here</a></div>-->
+    <!--      </div>-->
+    <!--    </template>-->
 
-    <div class="col-12 q-my-sm">
-      <div class="text-subtitle2">Permissions</div>
-    </div>
+<!--    <div class="col-12 q-my-sm">-->
+<!--      <div class="text-subtitle2">Permissions</div>-->
+<!--    </div>-->
 
-    <div class="col-12 q-my-md">
-      <div> {{ permissionText(appFeature) }}</div>
-    </div>
+<!--    <div class="col-12 q-my-md">-->
+<!--      <div> {{ permissionText(appFeature) }}</div>-->
+<!--    </div>-->
 
   </div>
 
@@ -255,7 +255,7 @@ const revoke = (ident: string) => {
 
 const permissionText = (f: Feature | undefined) => {
   //if (!f) {
-    return ""
+  return ""
   //}
   // const permissions: string[] = f.permissions
   // if (permissions.length === 0) {
