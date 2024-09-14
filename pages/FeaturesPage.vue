@@ -251,18 +251,6 @@ const revoke = (ident: string) => {
   }
 }
 
-const permissionText = (f: Feature | undefined) => {
-  //if (!f) {
-  return ""
-  //}
-  // const permissions: string[] = f.permissions
-  // if (permissions.length === 0) {
-  //   return "This feature does not need additional browser permissions."
-  // } else {
-  //   return "This feature needs additional browser permissions: " + JSON.stringify(permissions)
-  // }
-}
-
 const getDependentFeatures = (rootFeature: string, onlyActive: boolean = false): Feature[] => {
   const featureIdent = rootFeature.toUpperCase() as FeatureIdent
   const dependentFeatures: Feature[] = []
