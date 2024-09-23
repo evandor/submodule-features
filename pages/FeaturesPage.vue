@@ -159,8 +159,6 @@ const feature = ref(null as unknown as string)
 const appFeature = ref<Feature | undefined>(undefined)
 const featureActive = ref(false)
 
-const text: Map<string, object> = new Map()
-
 onMounted(() => {
   Analytics.firePageViewEvent('FeaturesPage', document.location.href);
 })
@@ -251,18 +249,6 @@ const revoke = (ident: string) => {
     console.log("revoking2", ident)
     useFeaturesStore().deactivateFeature(ident)
   }
-}
-
-const permissionText = (f: Feature | undefined) => {
-  //if (!f) {
-  return ""
-  //}
-  // const permissions: string[] = f.permissions
-  // if (permissions.length === 0) {
-  //   return "This feature does not need additional browser permissions."
-  // } else {
-  //   return "This feature needs additional browser permissions: " + JSON.stringify(permissions)
-  // }
 }
 
 const getDependentFeatures = (rootFeature: string, onlyActive: boolean = false): Feature[] => {
