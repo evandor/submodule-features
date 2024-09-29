@@ -1,6 +1,9 @@
 import Command from "src/core/domain/Command";
 import {ExecutionResult} from "src/core/domain/ExecutionResult";
 import {useFeaturesStore} from "src/features/stores/featuresStore";
+import {useLogger} from "src/services/Logger";
+
+const {info} = useLogger()
 
 export class ActivateFeatureCommand implements Command<any> {
 
@@ -10,6 +13,7 @@ export class ActivateFeatureCommand implements Command<any> {
 
   async execute(): Promise<ExecutionResult<any>> {
     useFeaturesStore().activateFeature(this.featureIdentifier.toLowerCase())
+    info("feature activated: " + this.featureIdentifier)
     return Promise.resolve(
       new ExecutionResult(
         "done",
