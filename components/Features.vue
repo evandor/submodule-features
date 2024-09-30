@@ -109,7 +109,7 @@ const featuresByType = (type: FeatureType) =>
 const appVersion = import.meta.env.PACKAGE_VERSION
 
 const iconColor2 = (f: Feature) => {
-  return useFeaturesStore().activeFeatures.indexOf(f.ident.toLowerCase()) >= 0 ? 'green' : 'grey'
+  return useFeaturesStore().activeFeatures.indexOf(f.ident.toLowerCase()) >= 0 ? f.defaultColor ? f.defaultColor : 'green' : 'grey'
 }
 
 const showFeature2 = (f: Feature) => {

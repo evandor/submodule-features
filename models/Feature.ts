@@ -17,7 +17,8 @@ export class Feature {
     public image: string,
     public useIn: string[],
     public requires: string[] = [],
-    public needsAccount: boolean = false
+    public needsAccount: boolean = false,
+    public defaultColor: string = ''
   ) {
     this.activateCommands = [new ActivateFeatureCommand(this.ident)]
     this.deactivateCommands = [new DeactivateFeatureCommand(this.ident)]
