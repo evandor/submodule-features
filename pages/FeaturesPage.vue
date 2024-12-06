@@ -190,17 +190,6 @@ watchEffect(() => {
   }
 )
 
-// watchEffect(() => {
-//   console.log("=!!!", useFeaturesStore().count)
-// })
-//
-// watch(() => useFeaturesStore().count, (currentValue, oldValue) => {
-//   console.log("watvhingh!!", currentValue, oldValue)
-//   if (appFeature.value) {
-//     featureActive.value = useFeaturesStore().hasFeature(appFeature.value.ident as FeatureIdent)
-//   }
-// })
-
 const hasFeature = () => {
   if (appFeature.value && appFeature.value.ident) {
     const ident: FeatureIdent = FeatureIdent[appFeature.value.ident as keyof typeof FeatureIdent]
