@@ -232,7 +232,7 @@ const revoke = (ident: string) => {
   if (appFeature.value && appFeature.value.deactivateCommands) {
     console.log("revoking1", ident, appFeature.value.deactivateCommands)
     // TODO multiple commands?
-    useCommandExecutor().execute(appFeature.value.deactivateCommands[0])
+    useCommandExecutor().execute(appFeature.value.deactivateCommands[0]!)
       .then(() => useFeaturesStore().deactivateFeature(ident))
   } else {
     console.log("revoking2", ident)
