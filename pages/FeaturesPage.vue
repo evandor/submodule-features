@@ -141,7 +141,7 @@ import OpenRightDrawerWidget from "src/ui/widgets/OpenRightDrawerWidget.vue";
 import Analytics from "src/core/utils/google-analytics";
 import Command from "src/core/domain/Command";
 import {useUtils} from "src/core/services/Utils";
-import {useAuthStore} from "stores/authStore";
+import {useAuthStore} from "src/stores/authStore";
 import {Feature} from "src/features/models/Feature";
 import {useFeaturesStore} from "src/features/stores/featuresStore";
 import {FeatureIdent, FeatureType} from "src/app/models/FeatureIdent";
