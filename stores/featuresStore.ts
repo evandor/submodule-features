@@ -33,7 +33,6 @@ export const useFeaturesStore = defineStore('features', () => {
     //   return
     // }
     if (chrome && chrome.permissions) { // issues in vitest where chrome is not defined
-      // @ts-expect-error
       permissions.value = await chrome.permissions.getAll()
       if (permissions.value) {
         grantedOptionalPermissions.value = permissions.value.permissions ? permissions.value.permissions : []
@@ -113,7 +112,7 @@ export const useFeaturesStore = defineStore('features', () => {
   const hasFeature = computed(() => {
     return (feature: FeatureIdent): boolean => {
       // if (feature === FeatureIdent.SIDE_PANEL) {
-      //   // @ts-expect-error
+      //   // @ts-expect-error TODO
       //   return chrome.sidePanel !== undefined
       // }
       const appFeature = new AppFeatures().getFeature(feature)
