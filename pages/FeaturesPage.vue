@@ -207,10 +207,10 @@ const grant = (ident: string) => {
       if (ident === 'bookmarks') {
         sendMsg('reload-application')
       }
-    } catch (err) {
+    } catch (err: any) {
       Notify.create({
         color: 'negative',
-        message: "got error: " + err
+        message: "got error: " + err.toString()
       })
     }
   }
