@@ -2,6 +2,9 @@
 
   <div class="q-ma-md">
     <b>Recommended Features</b>
+    <ToggleAllFeaturesInCategory
+      v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
+      :category="FeatureType.RECOMMENDED" />
   </div>
 
   <q-list>
@@ -13,7 +16,7 @@
       @click="showFeature2(f)">
 
       <q-item-section avatar>
-        <q-icon :name="f.icon" size="1.3em" :color="iconColor2(f)"/>
+        <q-icon :name="f.icon" size="1.3em" :color="iconColor2(f)" />
       </q-item-section>
       <q-item-section>{{ f.name }}</q-item-section>
       <q-tooltip class="tooltip" v-if="wrongMode(f)">
@@ -25,6 +28,9 @@
 
   <div class="q-ma-md">
     <b>Optional Features</b>
+    <ToggleAllFeaturesInCategory
+      v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
+      :category="FeatureType.OPTIONAL" />
   </div>
 
   <q-list>
@@ -36,7 +42,7 @@
       @click="showFeature2(f)">
 
       <q-item-section avatar>
-        <q-icon :name="f.icon" size="1.3em" :color="iconColor2(f)"/>
+        <q-icon :name="f.icon" size="1.3em" :color="iconColor2(f)" />
       </q-item-section>
       <q-item-section>{{ f.name }}</q-item-section>
       <q-tooltip class="tooltip" v-if="wrongMode(f)">
@@ -47,6 +53,10 @@
 
   <div class="q-ma-md" v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)">
     <b>Experimental Features</b>
+    <ToggleAllFeaturesInCategory
+      v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
+      :category="FeatureType.EXPERIMENTAL" />
+
   </div>
 
   <q-list v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)">
@@ -58,7 +68,7 @@
       @click="showFeature2(f)">
 
       <q-item-section avatar>
-        <q-icon :name="f.icon" size="1.3em" :color="iconColor2(f)"/>
+        <q-icon :name="f.icon" size="1.3em" :color="iconColor2(f)" />
       </q-item-section>
       <q-item-section>{{ f.name }}</q-item-section>
       <q-tooltip class="tooltip" v-if="wrongMode(f)">
@@ -72,14 +82,15 @@
 
 <script setup lang="ts">
 
-import {ref} from "vue";
-import {useRoute, useRouter} from "vue-router";
-import _ from "lodash"
-import {useQuasar} from "quasar";
-import {Feature} from "src/features/models/Feature";
-import {useFeaturesStore} from "src/features/stores/featuresStore";
-import {FeatureIdent, FeatureType} from "src/app/models/FeatureIdent";
-import {AppFeatures} from "src/app/models/AppFeatures";
+import { ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import _ from 'lodash'
+import { useQuasar } from 'quasar'
+import { Feature } from 'src/features/models/Feature'
+import { useFeaturesStore } from 'src/features/stores/featuresStore'
+import { FeatureIdent, FeatureType } from 'src/app/models/FeatureIdent'
+import { AppFeatures } from 'src/app/models/AppFeatures'
+import ToggleAllFeaturesInCategory from 'src/features/widgets/ToggleAllFeaturesInCategory.vue'
 
 const router = useRouter()
 const route = useRoute()
@@ -93,7 +104,6 @@ const featuresByType = (type: FeatureType) =>
     if (f.requires.length > 0) {
       let missingRequirement = false
       f.requires.forEach((requirement: string) => {
-        // if (!useFeaturesStore().hasFeature(requirement)) {
         if (useFeaturesStore().activeFeatures.indexOf(requirement.toLowerCase()) === -1) {
           missingRequirement = true
         }
@@ -115,8 +125,8 @@ const iconColor2 = (f: Feature) => {
 const showFeature2 = (f: Feature) => {
   selected2.value = f
   route.path.startsWith('/mainpanel/') ?
-    router.push("/mainpanel/features/" + f.ident.toLowerCase()) :
-    router.push("/features/" + f.ident.toLowerCase())
+    router.push('/mainpanel/features/' + f.ident.toLowerCase()) :
+    router.push('/features/' + f.ident.toLowerCase())
 }
 
 const wrongMode = (f: Feature) => {
