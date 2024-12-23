@@ -1,12 +1,11 @@
-import Command from "src/core/domain/Command";
-import {ActivateFeatureCommand} from "src/features/commands/ActivateFeatureCommand";
-import {DeactivateFeatureCommand} from "src/features/commands/DeactivateFeatureCommand";
+import Command from 'src/core/domain/Command'
+import { ActivateFeatureCommand } from 'src/features/commands/ActivateFeatureCommand'
+import { DeactivateFeatureCommand } from 'src/features/commands/DeactivateFeatureCommand'
 
 export class Feature {
-
   public activateCommands: Array<Command<any>> = []
   public deactivateCommands: Array<Command<any>> = []
-  public imageWidth: string = "250px";
+  public imageWidth: string = '250px'
 
   constructor(
     public ident: string,
@@ -18,7 +17,7 @@ export class Feature {
     public useIn: string[],
     public requires: string[] = [],
     public needsAccount: boolean = false,
-    public defaultColor: string = ''
+    public defaultColor: string = '',
   ) {
     this.activateCommands = [new ActivateFeatureCommand(this.ident)]
     this.deactivateCommands = [new DeactivateFeatureCommand(this.ident)]
@@ -36,6 +35,6 @@ export class Feature {
 
   setImageWidth(width: string) {
     this.imageWidth = width
-    return this;
+    return this
   }
 }

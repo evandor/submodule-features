@@ -1,7 +1,6 @@
-import FeaturesPersistence from "src/features/persistence/FeaturesPersistence";
+import FeaturesPersistence from 'src/features/persistence/FeaturesPersistence'
 
 class InMemoryFeaturesPersistence implements FeaturesPersistence {
-
   features: string[] = []
 
   getServiceName(): string {
@@ -14,7 +13,7 @@ class InMemoryFeaturesPersistence implements FeaturesPersistence {
   }
 
   compactDb(): Promise<any> {
-    return Promise.resolve(undefined);
+    return Promise.resolve(undefined)
   }
 
   getActiveFeatures(): Promise<string[]> {
@@ -24,7 +23,6 @@ class InMemoryFeaturesPersistence implements FeaturesPersistence {
   saveActiveFeatures(fs: string[]): any {
     this.features = fs
   }
-
 }
 
 export default new InMemoryFeaturesPersistence()

@@ -1,13 +1,12 @@
-import {defineStore} from "pinia";
-import {computed, ref} from "vue";
-import FeaturesPersistence from "src/features/persistence/FeaturesPersistence";
-import {useUtils} from "src/core/services/Utils";
-import {AppFeatures} from "src/app/models/AppFeatures";
-import {FeatureIdent} from "src/app/models/FeatureIdent";
+import { defineStore } from 'pinia'
+import { computed, ref } from 'vue'
+import FeaturesPersistence from 'src/features/persistence/FeaturesPersistence'
+import { useUtils } from 'src/core/services/Utils'
+import { AppFeatures } from 'src/app/models/AppFeatures'
+import { FeatureIdent } from 'src/app/models/FeatureIdent'
 
 export const useFeaturesStore = defineStore('features', () => {
-
-  const {sendMsg} = useUtils()
+  const { sendMsg } = useUtils()
 
   let storage = null as unknown as FeaturesPersistence
 
@@ -17,7 +16,7 @@ export const useFeaturesStore = defineStore('features', () => {
   const permissions = ref<chrome.permissions.Permissions | undefined>(undefined)
 
   // related to tabsets permissions
-  const activeFeatures = ref<string[]>( [])
+  const activeFeatures = ref<string[]>([])
 
   async function initialize(persistence: FeaturesPersistence) {
     console.debug(` ...initializing featuresStore (${persistence?.getServiceName()})`)
@@ -32,17 +31,20 @@ export const useFeaturesStore = defineStore('features', () => {
     // if (process.env.MODE !== 'bex') {
     //   return
     // }
-    if (chrome && chrome.permissions) { // issues in vitest where chrome is not defined
+    if (chrome && chrome.permissions) {
+      // issues in vitest where chrome is not defined
       permissions.value = await chrome.permissions.getAll()
       if (permissions.value) {
-        grantedOptionalPermissions.value = permissions.value.permissions ? permissions.value.permissions : []
+        grantedOptionalPermissions.value = permissions.value.permissions
+          ? permissions.value.permissions
+          : []
         grantedOptionalOrigins.value = permissions.value.origins ? permissions.value.origins : []
       }
     }
   }
 
   function activateFeature(feature: string) {
-    console.log("activate feature", feature, activeFeatures.value)
+    console.log('activate feature', feature, activeFeatures.value)
     if (storage && activeFeatures.value.indexOf(feature) < 0) {
       // console.log("===<", activeFeatures.value)
 
@@ -66,14 +68,14 @@ export const useFeaturesStore = defineStore('features', () => {
       //   //useSuggestionsStore().removeSuggestion(StaticSuggestionIdent.TRY_TAB_DETAILS_FEATURE)
       //   useCommandExecutor().executeFromUi(new CreateSpecialTabsetCommand(SpecialTabsetIdent.IGNORE, TabsetType.SPECIAL))
       // }
-      sendMsg('feature-activated', {feature: feature})
+      sendMsg('feature-activated', { feature: feature })
     } else if (!storage) {
-      console.warn("storage is not set in featuresStore!")
+      console.warn('storage is not set in featuresStore!')
     }
   }
 
   function deactivateRecursive(feature: string) {
-    console.log("deactivate recursive: ", feature)
+    console.log('deactivate recursive: ', feature)
     const deactivatedIdent = feature.toUpperCase() as FeatureIdent
 
     //console.log("deactivating normal feature", feature)
@@ -88,18 +90,19 @@ export const useFeaturesStore = defineStore('features', () => {
       // }
       activeFeatures.value.splice(index, 1)
       storage.saveActiveFeatures(activeFeatures.value)
-      sendMsg('feature-deactivated', {feature: feature})
-      new AppFeatures().getFeatures().forEach(f => {
-        if (f.requires.findIndex((r: string) => {
-          return r === deactivatedIdent.toString()
-        }) >= 0) {
-          console.log("need to deactivate as well:", f)
+      sendMsg('feature-deactivated', { feature: feature })
+      new AppFeatures().getFeatures().forEach((f) => {
+        if (
+          f.requires.findIndex((r: string) => {
+            return r === deactivatedIdent.toString()
+          }) >= 0
+        ) {
+          console.log('need to deactivate as well:', f)
           deactivateRecursive(f.ident.toLowerCase())
         }
       })
       //console.log("deactivated", feature, activeFeatures.value)
     }
-
   }
 
   const deactivateFeature = computed(() => {
@@ -123,13 +126,11 @@ export const useFeaturesStore = defineStore('features', () => {
     }
   })
 
-
   return {
     initialize,
     activeFeatures,
     hasFeature,
     activateFeature,
-    deactivateFeature
+    deactivateFeature,
   }
 })
-
