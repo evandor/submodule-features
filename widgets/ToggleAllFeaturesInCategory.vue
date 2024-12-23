@@ -1,21 +1,24 @@
 <template>
-  <q-icon class="q-ml-md"
-          :class="deactiveFeatures.length > 0 ? 'cursor-pointer':''"
-          :color="deactiveFeatures.length > 0 ? 'positive':'grey'"
-          name="done_all"
-          @click="activateAll()">
+  <q-icon
+    class="q-ml-md"
+    :class="deactiveFeatures.length > 0 ? 'cursor-pointer' : ''"
+    :color="deactiveFeatures.length > 0 ? 'positive' : 'grey'"
+    name="done_all"
+    @click="activateAll()"
+  >
     <q-tooltip class="tooltip-small">Activate all features in this category</q-tooltip>
   </q-icon>
-  <q-icon class="q-ml-md"
-          :class="activeFeatures.length > 0 ? 'cursor-pointer':''"
-          :color="activeFeatures.length > 0 ? 'positive':'grey'"
-          name="clear_all"
-          @click="deactivateAll()">
+  <q-icon
+    class="q-ml-md"
+    :class="activeFeatures.length > 0 ? 'cursor-pointer' : ''"
+    :color="activeFeatures.length > 0 ? 'positive' : 'grey'"
+    name="clear_all"
+    @click="deactivateAll()"
+  >
     <q-tooltip class="tooltip-small">Deactivate all features in this category</q-tooltip>
   </q-icon>
 </template>
 <script lang="ts" setup>
-
 import { FeatureType } from 'src/app/models/FeatureIdent'
 import { ref, watchEffect } from 'vue'
 import { AppFeatures } from 'src/app/models/AppFeatures'

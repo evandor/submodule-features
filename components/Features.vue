@@ -1,20 +1,22 @@
 <template>
-
   <div class="q-ma-md">
     <b>Recommended Features</b>
     <ToggleAllFeaturesInCategory
       v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
-      :category="FeatureType.RECOMMENDED" />
+      :category="FeatureType.RECOMMENDED"
+    />
   </div>
 
   <q-list>
     <q-item
       v-for="f in featuresByType(FeatureType.RECOMMENDED)"
-      clickable v-ripple :dense="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
+      clickable
+      v-ripple
+      :dense="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
       :active="f === selected2"
       :disable="wrongMode(f)"
-      @click="showFeature2(f)">
-
+      @click="showFeature2(f)"
+    >
       <q-item-section avatar>
         <q-icon :name="f.icon" size="1.3em" :color="iconColor2(f)" />
       </q-item-section>
@@ -23,24 +25,26 @@
         This feature is not available in this mode of tabsets
       </q-tooltip>
     </q-item>
-
   </q-list>
 
   <div class="q-ma-md">
     <b>Optional Features</b>
     <ToggleAllFeaturesInCategory
       v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
-      :category="FeatureType.OPTIONAL" />
+      :category="FeatureType.OPTIONAL"
+    />
   </div>
 
   <q-list>
     <q-item
       v-for="f in featuresByType(FeatureType.OPTIONAL)"
-      clickable v-ripple :dense="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
+      clickable
+      v-ripple
+      :dense="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
       :active="f === selected2"
       :disable="wrongMode(f)"
-      @click="showFeature2(f)">
-
+      @click="showFeature2(f)"
+    >
       <q-item-section avatar>
         <q-icon :name="f.icon" size="1.3em" :color="iconColor2(f)" />
       </q-item-section>
@@ -55,18 +59,20 @@
     <b>Experimental Features</b>
     <ToggleAllFeaturesInCategory
       v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
-      :category="FeatureType.EXPERIMENTAL" />
-
+      :category="FeatureType.EXPERIMENTAL"
+    />
   </div>
 
   <q-list v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)">
     <q-item
       v-for="f in featuresByType(FeatureType.EXPERIMENTAL)"
-      clickable v-ripple :dense="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
+      clickable
+      v-ripple
+      :dense="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
       :active="f === selected2"
       :disable="wrongMode(f)"
-      @click="showFeature2(f)">
-
+      @click="showFeature2(f)"
+    >
       <q-item-section avatar>
         <q-icon :name="f.icon" size="1.3em" :color="iconColor2(f)" />
       </q-item-section>
@@ -76,12 +82,9 @@
       </q-tooltip>
     </q-item>
   </q-list>
-
-
 </template>
 
 <script setup lang="ts">
-
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import _ from 'lodash'
@@ -119,14 +122,18 @@ const featuresByType = (type: FeatureType) =>
 const appVersion = import.meta.env.PACKAGE_VERSION
 
 const iconColor2 = (f: Feature) => {
-  return useFeaturesStore().activeFeatures.indexOf(f.ident.toLowerCase()) >= 0 ? f.defaultColor ? f.defaultColor : 'green' : 'grey'
+  return useFeaturesStore().activeFeatures.indexOf(f.ident.toLowerCase()) >= 0
+    ? f.defaultColor
+      ? f.defaultColor
+      : 'green'
+    : 'grey'
 }
 
 const showFeature2 = (f: Feature) => {
   selected2.value = f
-  route.path.startsWith('/mainpanel/') ?
-    router.push('/mainpanel/features/' + f.ident.toLowerCase()) :
-    router.push('/features/' + f.ident.toLowerCase())
+  route.path.startsWith('/mainpanel/')
+    ? router.push('/mainpanel/features/' + f.ident.toLowerCase())
+    : router.push('/features/' + f.ident.toLowerCase())
 }
 
 const wrongMode = (f: Feature) => {
