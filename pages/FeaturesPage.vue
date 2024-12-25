@@ -148,21 +148,21 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watchEffect } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
 import { Notify } from 'quasar'
-import { useCommandExecutor } from 'src/core/services/CommandExecutor'
-import InfoMessageWidget from 'src/ui/widgets/InfoMessageWidget.vue'
-import { DrawerTabs, useUiStore } from 'src/ui/stores/uiStore'
-import OpenRightDrawerWidget from 'src/ui/widgets/OpenRightDrawerWidget.vue'
-import Analytics from 'src/core/utils/google-analytics'
+import { AppFeatures } from 'src/app/models/AppFeatures'
+import { FeatureIdent, FeatureType } from 'src/app/models/FeatureIdent'
 import Command from 'src/core/domain/Command'
+import { useCommandExecutor } from 'src/core/services/CommandExecutor'
 import { useUtils } from 'src/core/services/Utils'
-import { useAuthStore } from 'src/stores/authStore'
+import Analytics from 'src/core/utils/google-analytics'
 import { Feature } from 'src/features/models/Feature'
 import { useFeaturesStore } from 'src/features/stores/featuresStore'
-import { FeatureIdent, FeatureType } from 'src/app/models/FeatureIdent'
-import { AppFeatures } from 'src/app/models/AppFeatures'
+import { useAuthStore } from 'src/stores/authStore'
+import { DrawerTabs, useUiStore } from 'src/ui/stores/uiStore'
+import InfoMessageWidget from 'src/ui/widgets/InfoMessageWidget.vue'
+import OpenRightDrawerWidget from 'src/ui/widgets/OpenRightDrawerWidget.vue'
+import { onMounted, ref, watchEffect } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
 const router = useRouter()

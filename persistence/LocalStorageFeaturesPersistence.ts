@@ -1,5 +1,5 @@
-import FeaturesPersistence from 'src/features/persistence/FeaturesPersistence'
 import { QVueGlobals } from 'quasar'
+import FeaturesPersistence from 'src/features/persistence/FeaturesPersistence'
 
 export class LocalStorageFeaturesPersistence implements FeaturesPersistence {
   private quasar: QVueGlobals

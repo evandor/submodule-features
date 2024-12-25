@@ -1,7 +1,7 @@
 import Command from 'src/core/domain/Command'
 import { ExecutionResult } from 'src/core/domain/ExecutionResult'
-import { useFeaturesStore } from '../stores/featuresStore'
 import { useLogger } from 'src/services/Logger'
+import { useFeaturesStore } from '../stores/featuresStore'
 
 const { info } = useLogger()
 
