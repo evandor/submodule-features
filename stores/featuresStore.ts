@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia'
-import { computed, ref } from 'vue'
-import FeaturesPersistence from 'src/features/persistence/FeaturesPersistence'
-import { useUtils } from 'src/core/services/Utils'
 import { AppFeatures } from 'src/app/models/AppFeatures'
 import { FeatureIdent } from 'src/app/models/FeatureIdent'
+import { useUtils } from 'src/core/services/Utils'
+import FeaturesPersistence from 'src/features/persistence/FeaturesPersistence'
+import { computed, ref } from 'vue'
 
 export const useFeaturesStore = defineStore('features', () => {
   const { sendMsg } = useUtils()

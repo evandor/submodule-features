@@ -19,14 +19,14 @@
   </q-icon>
 </template>
 <script lang="ts" setup>
-import { FeatureType } from 'src/app/models/FeatureIdent'
-import { ref, watchEffect } from 'vue'
 import { AppFeatures } from 'src/app/models/AppFeatures'
-import { Feature } from 'src/features/models/Feature'
+import { FeatureType } from 'src/app/models/FeatureIdent'
 import { useCommandExecutor } from 'src/core/services/CommandExecutor'
 import { ActivateFeatureCommand } from 'src/features/commands/ActivateFeatureCommand'
 import { DeactivateFeatureCommand } from 'src/features/commands/DeactivateFeatureCommand'
+import { Feature } from 'src/features/models/Feature'
 import { useFeaturesStore } from 'src/features/stores/featuresStore'
+import { ref, watchEffect } from 'vue'
 
 const props = defineProps<{
   category: FeatureType

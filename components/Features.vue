@@ -85,15 +85,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
 import _ from 'lodash'
 import { useQuasar } from 'quasar'
+import { AppFeatures } from 'src/app/models/AppFeatures'
+import { FeatureIdent, FeatureType } from 'src/app/models/FeatureIdent'
 import { Feature } from 'src/features/models/Feature'
 import { useFeaturesStore } from 'src/features/stores/featuresStore'
-import { FeatureIdent, FeatureType } from 'src/app/models/FeatureIdent'
-import { AppFeatures } from 'src/app/models/AppFeatures'
 import ToggleAllFeaturesInCategory from 'src/features/widgets/ToggleAllFeaturesInCategory.vue'
+import { ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 const router = useRouter()
 const route = useRoute()
