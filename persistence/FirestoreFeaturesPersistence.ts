@@ -1,8 +1,8 @@
-import { useAuthStore } from 'stores/authStore'
 import { collection, deleteDoc, doc, getDocs, setDoc } from 'firebase/firestore'
-import FirebaseServices from 'src/services/firebase/FirebaseServices'
-import FeaturesPersistence from 'src/features/persistence/FeaturesPersistence'
 import { uid } from 'quasar'
+import FeaturesPersistence from 'src/features/persistence/FeaturesPersistence'
+import FirebaseServices from 'src/services/firebase/FirebaseServices'
+import { useAuthStore } from 'stores/authStore'
 
 const STORE_IDENT = 'features'
 
