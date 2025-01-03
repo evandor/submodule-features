@@ -3,8 +3,7 @@
     <b>Recommended Features</b>
     <ToggleAllFeaturesInCategory
       v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
-      :category="FeatureType.RECOMMENDED"
-    />
+      :category="FeatureType.RECOMMENDED" />
   </div>
 
   <q-list>
@@ -15,15 +14,12 @@
       :dense="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
       :active="f === selected2"
       :disable="wrongMode(f)"
-      @click="showFeature2(f)"
-    >
+      @click="showFeature2(f)">
       <q-item-section avatar>
         <q-icon :name="f.icon" size="1.3em" :color="iconColor2(f)" />
       </q-item-section>
       <q-item-section>{{ f.name }}</q-item-section>
-      <q-tooltip class="tooltip" v-if="wrongMode(f)">
-        This feature is not available in this mode of tabsets
-      </q-tooltip>
+      <q-tooltip class="tooltip" v-if="wrongMode(f)"> This feature is not available in this mode of tabsets </q-tooltip>
     </q-item>
   </q-list>
 
@@ -31,8 +27,7 @@
     <b>Optional Features</b>
     <ToggleAllFeaturesInCategory
       v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
-      :category="FeatureType.OPTIONAL"
-    />
+      :category="FeatureType.OPTIONAL" />
   </div>
 
   <q-list>
@@ -43,15 +38,12 @@
       :dense="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
       :active="f === selected2"
       :disable="wrongMode(f)"
-      @click="showFeature2(f)"
-    >
+      @click="showFeature2(f)">
       <q-item-section avatar>
         <q-icon :name="f.icon" size="1.3em" :color="iconColor2(f)" />
       </q-item-section>
       <q-item-section>{{ f.name }}</q-item-section>
-      <q-tooltip class="tooltip" v-if="wrongMode(f)">
-        This feature is not available in this mode of tabsets
-      </q-tooltip>
+      <q-tooltip class="tooltip" v-if="wrongMode(f)"> This feature is not available in this mode of tabsets </q-tooltip>
     </q-item>
   </q-list>
 
@@ -59,8 +51,7 @@
     <b>Experimental Features</b>
     <ToggleAllFeaturesInCategory
       v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
-      :category="FeatureType.EXPERIMENTAL"
-    />
+      :category="FeatureType.EXPERIMENTAL" />
   </div>
 
   <q-list v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)">
@@ -71,15 +62,12 @@
       :dense="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
       :active="f === selected2"
       :disable="wrongMode(f)"
-      @click="showFeature2(f)"
-    >
+      @click="showFeature2(f)">
       <q-item-section avatar>
         <q-icon :name="f.icon" size="1.3em" :color="iconColor2(f)" />
       </q-item-section>
       <q-item-section>{{ f.name }}</q-item-section>
-      <q-tooltip class="tooltip" v-if="wrongMode(f)">
-        This feature is not available in this mode of tabsets
-      </q-tooltip>
+      <q-tooltip class="tooltip" v-if="wrongMode(f)"> This feature is not available in this mode of tabsets </q-tooltip>
     </q-item>
   </q-list>
 </template>

@@ -4,8 +4,7 @@
     :class="deactiveFeatures.length > 0 ? 'cursor-pointer' : ''"
     :color="deactiveFeatures.length > 0 ? 'positive' : 'grey'"
     name="done_all"
-    @click="activateAll()"
-  >
+    @click="activateAll()">
     <q-tooltip class="tooltip-small">Activate all features in this category</q-tooltip>
   </q-icon>
   <q-icon
@@ -13,8 +12,7 @@
     :class="activeFeatures.length > 0 ? 'cursor-pointer' : ''"
     :color="activeFeatures.length > 0 ? 'positive' : 'grey'"
     name="clear_all"
-    @click="deactivateAll()"
-  >
+    @click="deactivateAll()">
     <q-tooltip class="tooltip-small">Deactivate all features in this category</q-tooltip>
   </q-icon>
 </template>

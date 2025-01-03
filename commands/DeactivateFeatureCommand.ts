@@ -12,10 +12,7 @@ export class DeactivateFeatureCommand implements Command<any> {
     useFeaturesStore().deactivateFeature(this.featureIdentifier.toLowerCase())
     info('feature deactivated: ' + this.featureIdentifier)
     return Promise.resolve(
-      new ExecutionResult(
-        'done',
-        `Feature ${this.featureIdentifier.toLowerCase()} was deactivated`,
-      ),
+      new ExecutionResult('done', `Feature ${this.featureIdentifier.toLowerCase()} was deactivated`),
     )
   }
 }

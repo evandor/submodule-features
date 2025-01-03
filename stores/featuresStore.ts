@@ -35,9 +35,7 @@ export const useFeaturesStore = defineStore('features', () => {
       // issues in vitest where chrome is not defined
       permissions.value = await chrome.permissions.getAll()
       if (permissions.value) {
-        grantedOptionalPermissions.value = permissions.value.permissions
-          ? permissions.value.permissions
-          : []
+        grantedOptionalPermissions.value = permissions.value.permissions ? permissions.value.permissions : []
         grantedOptionalOrigins.value = permissions.value.origins ? permissions.value.origins : []
       }
     }
