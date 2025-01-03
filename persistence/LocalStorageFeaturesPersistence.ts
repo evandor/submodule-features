@@ -17,9 +17,7 @@ export class LocalStorageFeaturesPersistence implements FeaturesPersistence {
   }
 
   getActiveFeatures(): Promise<string[]> {
-    return Promise.resolve(
-      (this.quasar.localStorage?.getItem('ui.activeFeatures') as string[]) || [],
-    )
+    return Promise.resolve((this.quasar.localStorage?.getItem('ui.activeFeatures') as string[]) || [])
   }
 
   init(): Promise<any> {

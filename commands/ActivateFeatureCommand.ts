@@ -11,9 +11,7 @@ export class ActivateFeatureCommand implements Command<any> {
   async execute(): Promise<ExecutionResult<any>> {
     useFeaturesStore().activateFeature(this.featureIdentifier.toLowerCase())
     info('feature activated: ' + this.featureIdentifier)
-    return Promise.resolve(
-      new ExecutionResult('done', `Feature ${this.featureIdentifier.toLowerCase()} was activated`),
-    )
+    return Promise.resolve(new ExecutionResult('done', `Feature ${this.featureIdentifier.toLowerCase()} was activated`))
   }
 }
 

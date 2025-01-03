@@ -10,8 +10,7 @@
                 name="chevron_left"
                 class="cursor-pointer q-mr-lg"
                 size="24px"
-                @click="router.push('/mainpanel/settings')"
-              >
+                @click="router.push('/mainpanel/settings')">
                 <q-tooltip>Back</q-tooltip>
               </q-icon>
             </div>
@@ -31,8 +30,7 @@
     :probability="1"
     ident="featuresPage_overview"
     hint="The Tabsets Extension starts simple - you can manage tabs - but it has more to offer. Check out the optional or
-      experimental features described below. Some of the features may require additional browser permissions which you will have to grant."
-  />
+      experimental features described below. Some of the features may require additional browser permissions which you will have to grant." />
 
   <div class="row q-ma-lg">
     <div class="col-7">
@@ -52,8 +50,7 @@
           color="warning"
           label="Activate Feature"
           @click="grant(feature)"
-          :disable="needsAccountAndUserNotLoggedIn()"
-        />
+          :disable="needsAccountAndUserNotLoggedIn()" />
         <q-btn v-else label="Deactivate Feature" @click="revoke(feature)" />
       </div>
     </div>
@@ -69,16 +66,14 @@
 
     <div class="col-12 q-my-md">
       <div v-if="appFeature?.type === FeatureType.RECOMMENDED">
-        This feature is considered stable and useful, but not activated by default. To use it,
-        switch this feature on.
+        This feature is considered stable and useful, but not activated by default. To use it, switch this feature on.
       </div>
       <div v-if="appFeature?.type === FeatureType.OPTIONAL">
-        This feature is considered stable but might not be useful for everybody. To use it, switch
-        this feature on.
+        This feature is considered stable but might not be useful for everybody. To use it, switch this feature on.
       </div>
       <div v-if="appFeature?.type === FeatureType.EXPERIMENTAL">
-        This feature is not considered stable and might break other parts of this extension. To use
-        it at your own risk, switch this feature on.
+        This feature is not considered stable and might break other parts of this extension. To use it at your own risk,
+        switch this feature on.
       </div>
     </div>
 
@@ -94,25 +89,18 @@
     <div class="col-12 q-my-sm" v-if="getDependentFeatures(feature).length > 0 && !hasFeature()">
       <div class="text-subtitle2">Dependent Features</div>
     </div>
-    <div
-      class="col-12 q-my-sm"
-      v-if="getDependentFeatures(feature, true).length > 0 && hasFeature()"
-    >
+    <div class="col-12 q-my-sm" v-if="getDependentFeatures(feature, true).length > 0 && hasFeature()">
       <div class="text-subtitle2">Dependent Features</div>
     </div>
 
     <div class="col-12 q-my-md" v-if="getDependentFeatures(feature).length > 0 && !hasFeature()">
-      Activating this feature will make {{ getDependentFeatures(feature).length }} more feature(s)
-      available:
+      Activating this feature will make {{ getDependentFeatures(feature).length }} more feature(s) available:
       <ul>
         <li v-for="f in getDependentFeatures(feature)">{{ f.name }}</li>
       </ul>
     </div>
 
-    <div
-      class="col-12 q-my-md"
-      v-if="getDependentFeatures(feature, true).length > 0 && hasFeature()"
-    >
+    <div class="col-12 q-my-md" v-if="getDependentFeatures(feature, true).length > 0 && hasFeature()">
       Deactivating this feature would deactivate
       {{ getDependentFeatures(feature, true).length }} more feature(s):
       <ul>
@@ -273,8 +261,7 @@ const getDependentFeatures = (rootFeature: string, onlyActive: boolean = false):
   return dependentFeatures
 }
 
-const isActive = (f: Feature) =>
-  useFeaturesStore().hasFeature(FeatureIdent[f.ident as keyof typeof FeatureIdent])
+const isActive = (f: Feature) => useFeaturesStore().hasFeature(FeatureIdent[f.ident as keyof typeof FeatureIdent])
 
 const needsAccountAndUserNotLoggedIn = (): boolean => {
   if (!appFeature.value?.needsAccount) {
