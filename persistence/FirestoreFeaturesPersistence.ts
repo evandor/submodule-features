@@ -36,12 +36,9 @@ class FirestoreFeaturesPersistence implements FeaturesPersistence {
   clear(name: string): void {}
 
   async getActiveFeatures(): Promise<string[]> {
-    // const querySnapshot = await getDocs(collection(FirebaseServices.getFirestore(), "users", useAuthStore().user.uid, STORE_IDENT));
-    // querySnapshot.forEach((doc) => {
-    //   // doc.data() is never undefined for query doc snapshots
-    //   console.log(doc.id, " => ", doc.data());
-    // });
-
+    if (!useAuthStore().user) {
+      return Promise.resolve([]) // user not authenticated
+    }
     // collection(FirebaseServices.getFirestore(), "users", useAuthStore().user.uid, STORE_IDENT)
     const docs = await getDocs(featuresCollection())
     console.log('docs', docs)
