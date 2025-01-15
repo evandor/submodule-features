@@ -41,7 +41,7 @@ class FirestoreFeaturesPersistence implements FeaturesPersistence {
     }
     // collection(FirebaseServices.getFirestore(), "users", useAuthStore().user.uid, STORE_IDENT)
     const docs = await getDocs(featuresCollection())
-    console.log('docs', docs)
+    // console.log('docs', docs)
 
     const res: string[] = []
     docs.forEach((doc) => {
@@ -50,15 +50,6 @@ class FirestoreFeaturesPersistence implements FeaturesPersistence {
       res.push(doc.data()['feature'])
     })
     return Promise.resolve(res)
-
-    // if (docs) {
-    //   return _.map(docs, (doc: any) => {
-    //     console.log("doc", doc)
-    //     const d = doc.data() as string
-    //     console.log("d",d)
-    //     return d ? d : ''
-    //   })
-    // }
   }
 
   async saveActiveFeatures(activeFeatures: string[]) {
