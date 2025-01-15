@@ -19,7 +19,7 @@ export const useFeaturesStore = defineStore('features', () => {
   const activeFeatures = ref<string[]>([])
 
   async function initialize(persistence: FeaturesPersistence) {
-    console.debug(` ...initializing featuresStore (${persistence?.getServiceName()})`)
+    // console.debug(` ...initializing featuresStore (${persistence?.getServiceName()})`)
     storage = persistence
     await storage.init()
     await load()
