@@ -5,7 +5,7 @@
     :color="deactiveFeatures.length > 0 ? 'positive' : 'grey'"
     name="done_all"
     @click="activateAll()">
-    <q-tooltip class="tooltip-small">Activate all features in this category</q-tooltip>
+    <q-tooltip class="tooltip-small">Activate all features (without special permissions) in this category</q-tooltip>
   </q-icon>
   <q-icon
     class="q-ml-md"
@@ -49,7 +49,10 @@ watchEffect(() => {
 const activateAll = () => {
   console.log(`activate all features in ${props.category}`)
   deactiveFeatures.value.forEach((f: Feature) => {
-    useCommandExecutor().execute(new ActivateFeatureCommand(f.ident))
+    console.log('f', f)
+    if (f.activateCommands.length <= 1) {
+      useCommandExecutor().execute(new ActivateFeatureCommand(f.ident))
+    }
   })
 }
 
