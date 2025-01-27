@@ -55,7 +55,7 @@ export const useFeaturesStore = defineStore('features', () => {
       storage.saveActiveFeatures(activeFeatures.value)
 
       // if (FeatureIdent.SPACES.toLowerCase() === feature) {
-      //   useSuggestionsStore().inactivateSuggestion(Suggestion.getStaticSuggestion(StaticSuggestionIdent.TRY_SPACES_FEATURE))
+      //   useSuggestionsStore().inactivateSuggestion(Suggestion.getStaticSuggestion('TRY_SPACES_FEATURE'))
       // }
       // if (FeatureIdent.BACKUP.toLowerCase() === feature) {
       //   useCommandExecutor().executeFromUi(new CreateSpecialTabsetCommand(SpecialTabsetIdent.BACKUP, TabsetType.SPECIAL))
