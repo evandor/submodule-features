@@ -6,7 +6,7 @@ import FeaturesPersistence from 'src/features/persistence/FeaturesPersistence'
 import { computed, ref } from 'vue'
 
 export const useFeaturesStore = defineStore('features', () => {
-  const { sendMsg } = useUtils()
+  const { sendMsg, inBexMode } = useUtils()
 
   let storage = null as unknown as FeaturesPersistence
 
@@ -31,7 +31,7 @@ export const useFeaturesStore = defineStore('features', () => {
     // if (process.env.MODE !== 'bex') {
     //   return
     // }
-    if (chrome && chrome.permissions) {
+    if (inBexMode() && chrome && chrome.permissions) {
       // issues in vitest where chrome is not defined
       permissions.value = await chrome.permissions.getAll()
       if (permissions.value) {
