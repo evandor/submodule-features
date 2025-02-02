@@ -29,8 +29,7 @@
   <InfoMessageWidget
     :probability="1"
     ident="featuresPage_overview"
-    hint="The Tabsets Extension starts simple - you can manage tabs - but it has more to offer. Check out the optional or
-      experimental features described below. Some of the features may require additional browser permissions which you will have to grant." />
+    hint="The Tabsets Extension starts simple - you can manage tabs - but it has more to offer. Check out additional features (some of which may require additional browser permissions which you will have to grant)." />
 
   <div class="row q-ma-lg">
     <div class="col-7">
@@ -59,80 +58,78 @@
       Click on the login icon in the sidepanel to sign up for an account:<br /><br />
       <q-img src="signup.png" width="100px" />
     </div>
-
-    <div class="col-12 q-my-sm">
-      <div class="text-subtitle2">Type</div>
-    </div>
-
-    <div class="col-12 q-my-md">
-      <div v-if="appFeature?.type === FeatureType.RECOMMENDED">
-        This feature is considered stable and useful, but not activated by default. To use it, switch this feature on.
-      </div>
-      <div v-if="appFeature?.type === FeatureType.OPTIONAL">
-        This feature is considered stable but might not be useful for everybody. To use it, switch this feature on.
-      </div>
-      <div v-if="appFeature?.type === FeatureType.EXPERIMENTAL">
-        This feature is not considered stable and might break other parts of this extension. To use it at your own risk,
-        switch this feature on.
-      </div>
-    </div>
-
-    <div class="col-12 q-my-sm">
-      <div class="text-subtitle2">Description</div>
-    </div>
-
-    <div class="col-12 q-my-md">
-      <div v-html="appFeature?.description"></div>
-      <div v-if="hasFeature()" class="text-primary q-mt-md">Feature is enabled</div>
-    </div>
-
-    <div class="col-12 q-my-sm" v-if="getDependentFeatures(feature).length > 0 && !hasFeature()">
-      <div class="text-subtitle2">Dependent Features</div>
-    </div>
-    <div class="col-12 q-my-sm" v-if="getDependentFeatures(feature, true).length > 0 && hasFeature()">
-      <div class="text-subtitle2">Dependent Features</div>
-    </div>
-
-    <div class="col-12 q-my-md" v-if="getDependentFeatures(feature).length > 0 && !hasFeature()">
-      Activating this feature will make {{ getDependentFeatures(feature).length }} more feature(s) available:
-      <ul>
-        <li v-for="f in getDependentFeatures(feature)">{{ f.name }}</li>
-      </ul>
-    </div>
-
-    <div class="col-12 q-my-md" v-if="getDependentFeatures(feature, true).length > 0 && hasFeature()">
-      Deactivating this feature would deactivate
-      {{ getDependentFeatures(feature, true).length }} more feature(s):
-      <ul>
-        <li v-for="f in getDependentFeatures(feature, true)">{{ f.name }} (currently active)</li>
-      </ul>
-    </div>
-
-    <div class="col-12 q-my-md" v-if="appFeature?.image">
-      <div>
-        <q-img :src="appFeature?.image" :width="appFeature?.imageWidth || '250px'" />
-      </div>
-    </div>
-
-    <!--    <template v-if="appFeature?.more">-->
-    <!--      <div class="col-12 q-my-sm">-->
-    <!--        <div class="text-subtitle2">More Info</div>-->
-    <!--      </div>-->
-
-    <!--      <div class="col-12 q-my-md">-->
-    <!--        <div> click <a class="cursor-pointer text-blue-6"-->
-    <!--                       @click="NavigationService.openOrCreateTab([appFeature?.more])">here</a></div>-->
-    <!--      </div>-->
-    <!--    </template>-->
-
-    <!--    <div class="col-12 q-my-sm">-->
-    <!--      <div class="text-subtitle2">Permissions</div>-->
-    <!--    </div>-->
-
-    <!--    <div class="col-12 q-my-md">-->
-    <!--      <div> {{ permissionText(appFeature) }}</div>-->
-    <!--    </div>-->
   </div>
+
+  <div class="row q-ma-lg">
+    <div class="col-12 q-mb-lg"><hr /></div>
+    <div class="col-5">
+      <q-img :src="appFeature?.image" :width="appFeature?.imageWidth || '250px'" />
+    </div>
+    <div class="col-7">
+      <div class="col-12 q-my-sm">
+        <div class="text-subtitle2">Description</div>
+      </div>
+
+      <div class="col-12 q-my-md">
+        <div v-html="appFeature?.description"></div>
+        <div v-if="hasFeature()" class="text-primary q-mt-md">Feature is enabled</div>
+      </div>
+
+      <div class="col-12 q-my-md">
+        <div v-if="appFeature?.type === FeatureType.RECOMMENDED">
+          This feature is considered stable and useful, but not activated by default. To use it, activate this feature.
+        </div>
+        <div v-if="appFeature?.type === FeatureType.OPTIONAL">
+          This feature is considered stable but might not be useful for everybody.To use it, activate this feature.
+        </div>
+        <div v-if="appFeature?.type === FeatureType.EXPERIMENTAL">
+          This feature is not considered stable and might break other parts of this extension. To use it at your own
+          risk, activate this feature.
+        </div>
+      </div>
+
+      <div class="col-12 q-my-sm" v-if="getDependentFeatures(feature).length > 0 && !hasFeature()">
+        <div class="text-subtitle2">Dependent Features</div>
+      </div>
+      <div class="col-12 q-my-sm" v-if="getDependentFeatures(feature, true).length > 0 && hasFeature()">
+        <div class="text-subtitle2">Dependent Features</div>
+      </div>
+
+      <div class="col-12 q-my-md" v-if="getDependentFeatures(feature).length > 0 && !hasFeature()">
+        Activating this feature will make {{ getDependentFeatures(feature).length }} more feature(s) available:
+        <ul>
+          <li v-for="f in getDependentFeatures(feature)">{{ f.name }}</li>
+        </ul>
+      </div>
+
+      <div class="col-12 q-my-md" v-if="getDependentFeatures(feature, true).length > 0 && hasFeature()">
+        Deactivating this feature would deactivate
+        {{ getDependentFeatures(feature, true).length }} more feature(s):
+        <ul>
+          <li v-for="f in getDependentFeatures(feature, true)">{{ f.name }} (currently active)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!--    <template v-if="appFeature?.more">-->
+  <!--      <div class="col-12 q-my-sm">-->
+  <!--        <div class="text-subtitle2">More Info</div>-->
+  <!--      </div>-->
+
+  <!--      <div class="col-12 q-my-md">-->
+  <!--        <div> click <a class="cursor-pointer text-blue-6"-->
+  <!--                       @click="NavigationService.openOrCreateTab([appFeature?.more])">here</a></div>-->
+  <!--      </div>-->
+  <!--    </template>-->
+
+  <!--    <div class="col-12 q-my-sm">-->
+  <!--      <div class="text-subtitle2">Permissions</div>-->
+  <!--    </div>-->
+
+  <!--    <div class="col-12 q-my-md">-->
+  <!--      <div> {{ permissionText(appFeature) }}</div>-->
+  <!--    </div>-->
 </template>
 
 <script setup lang="ts">
