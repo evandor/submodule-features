@@ -19,7 +19,7 @@
         <q-icon :name="f.icon" size="1.3em" :color="iconColor2(f)" />
       </q-item-section>
       <q-item-section>{{ f.name }}</q-item-section>
-      <q-tooltip class="tooltip" v-if="wrongMode(f)"> This feature is not available in this mode of tabsets </q-tooltip>
+      <q-tooltip class="tooltip" v-if="wrongMode(f)"> This feature is not available in this mode of tabsets</q-tooltip>
     </q-item>
   </q-list>
 
@@ -43,7 +43,7 @@
         <q-icon :name="f.icon" size="1.3em" :color="iconColor2(f)" />
       </q-item-section>
       <q-item-section>{{ f.name }}</q-item-section>
-      <q-tooltip class="tooltip" v-if="wrongMode(f)"> This feature is not available in this mode of tabsets </q-tooltip>
+      <q-tooltip class="tooltip" v-if="wrongMode(f)"> This feature is not available in this mode of tabsets</q-tooltip>
     </q-item>
   </q-list>
 
@@ -67,7 +67,7 @@
         <q-icon :name="f.icon" size="1.3em" :color="iconColor2(f)" />
       </q-item-section>
       <q-item-section>{{ f.name }}</q-item-section>
-      <q-tooltip class="tooltip" v-if="wrongMode(f)"> This feature is not available in this mode of tabsets </q-tooltip>
+      <q-tooltip class="tooltip" v-if="wrongMode(f)"> This feature is not available in this mode of tabsets</q-tooltip>
     </q-item>
   </q-list>
 </template>
@@ -119,9 +119,11 @@ const iconColor2 = (f: Feature) => {
 
 const showFeature2 = (f: Feature) => {
   selected2.value = f
-  route.path.startsWith('/mainpanel/')
-    ? router.push('/mainpanel/features/' + f.ident.toLowerCase())
-    : router.push('/features/' + f.ident.toLowerCase())
+  if (route.path.startsWith('/mainpanel/')) {
+    router.push('/mainpanel/features/' + f.ident.toLowerCase())
+  } else {
+    router.push('/features/' + f.ident.toLowerCase())
+  }
 }
 
 const wrongMode = (f: Feature) => {
