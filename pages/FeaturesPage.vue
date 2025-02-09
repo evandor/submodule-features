@@ -206,7 +206,7 @@ const grant = (ident: string) => {
         useCommandExecutor().execute(c)
       })
       if (ident === 'bookmarks') {
-        sendMsg('reload-application')
+        //sendMsg('reload-application')
       }
     } catch (err: any) {
       Notify.create({
