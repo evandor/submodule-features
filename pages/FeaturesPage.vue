@@ -174,15 +174,19 @@ watchEffect(() => {
     if (appFeature.value) {
       featureActive.value = useFeaturesStore().hasFeature(appFeature.value.ident as FeatureIdent)
       switch (appFeature.value.type) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
         case FeatureType.EXPERIMENTAL:
           title.value = 'Experimental Feature'
           break
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
         case FeatureType.RECOMMENDED:
           title.value = 'Recommended Feature'
           break
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
         case FeatureType.OPTIONAL:
           title.value = 'Optional Feature'
           break
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
         case FeatureType.PLANNED:
           title.value = 'Planned Feature'
           break
