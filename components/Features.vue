@@ -91,7 +91,7 @@ const features = ref(new AppFeatures().features)
 
 const featuresByType = (type: FeatureType) =>
   _.filter(features.value, (f: Feature) => {
-    const typeAndModeMatch = f.type === type && !wrongMode(f)
+    const typeAndModeMatch = f.type === type.toString() && !wrongMode(f)
     if (f.requires.length > 0) {
       let missingRequirement = false
       f.requires.forEach((requirement: string) => {
