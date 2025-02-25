@@ -76,13 +76,13 @@
       </div>
 
       <div class="col-12 q-my-md">
-        <div v-if="appFeature?.type === FeatureType.RECOMMENDED">
+        <div v-if="appFeature?.type === 'RECOMMENDED'">
           This feature is considered stable and useful, but not activated by default. To use it, activate this feature.
         </div>
-        <div v-if="appFeature?.type === FeatureType.OPTIONAL">
+        <div v-if="appFeature?.type === 'OPTIONAL'">
           This feature is considered stable but might not be useful for everybody.To use it, activate this feature.
         </div>
-        <div v-if="appFeature?.type === FeatureType.EXPERIMENTAL">
+        <div v-if="appFeature?.type === 'EXPERIMENTAL'">
           This feature is not considered stable and might break other parts of this extension. To use it at your own
           risk, activate this feature.
         </div>
@@ -174,20 +174,16 @@ watchEffect(() => {
     if (appFeature.value) {
       featureActive.value = useFeaturesStore().hasFeature(appFeature.value.ident as FeatureIdent)
       switch (appFeature.value.type) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
-        case FeatureType.EXPERIMENTAL:
+        case 'EXPERIMENTAL':
           title.value = 'Experimental Feature'
           break
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
-        case FeatureType.RECOMMENDED:
+        case 'RECOMMENDED':
           title.value = 'Recommended Feature'
           break
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
-        case FeatureType.OPTIONAL:
+        case 'OPTIONAL':
           title.value = 'Optional Feature'
           break
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
-        case FeatureType.PLANNED:
+        case 'PLANNED':
           title.value = 'Planned Feature'
           break
       }

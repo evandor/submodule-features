@@ -1,3 +1,4 @@
+import { FeatureType } from 'src/app/models/FeatureIdent'
 import Command from 'src/core/domain/Command'
 import { ActivateFeatureCommand } from 'src/features/commands/ActivateFeatureCommand'
 import { DeactivateFeatureCommand } from 'src/features/commands/DeactivateFeatureCommand'
@@ -9,7 +10,7 @@ export class Feature {
 
   constructor(
     public ident: string,
-    public type: string,
+    public type: FeatureType,
     public name: string,
     public description: string,
     public icon: string,
