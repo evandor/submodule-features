@@ -3,12 +3,12 @@
     <b>Recommended Features</b>
     <ToggleAllFeaturesInCategory
       v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
-      :category="FeatureType.RECOMMENDED" />
+      :category="'RECOMMENDED'" />
   </div>
 
   <q-list>
     <q-item
-      v-for="f in featuresByType(FeatureType.RECOMMENDED)"
+      v-for="f in featuresByType('RECOMMENDED')"
       clickable
       v-ripple
       :dense="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
@@ -25,14 +25,12 @@
 
   <div class="q-ma-md">
     <b>Optional Features</b>
-    <ToggleAllFeaturesInCategory
-      v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
-      :category="FeatureType.OPTIONAL" />
+    <ToggleAllFeaturesInCategory v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)" :category="'OPTIONAL'" />
   </div>
 
   <q-list>
     <q-item
-      v-for="f in featuresByType(FeatureType.OPTIONAL)"
+      v-for="f in featuresByType('OPTIONAL')"
       clickable
       v-ripple
       :dense="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
@@ -51,12 +49,12 @@
     <b>Experimental Features</b>
     <ToggleAllFeaturesInCategory
       v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
-      :category="FeatureType.EXPERIMENTAL" />
+      :category="'EXPERIMENTAL'" />
   </div>
 
   <q-list v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)">
     <q-item
-      v-for="f in featuresByType(FeatureType.EXPERIMENTAL)"
+      v-for="f in featuresByType('EXPERIMENTAL')"
       clickable
       v-ripple
       :dense="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
