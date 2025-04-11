@@ -135,7 +135,7 @@
 <script setup lang="ts">
 import { Notify } from 'quasar'
 import { AppFeatures } from 'src/app/models/AppFeatures'
-import { FeatureIdent, FeatureType } from 'src/app/models/FeatureIdent'
+import { FeatureIdent } from 'src/app/models/FeatureIdent'
 import Command from 'src/core/domain/Command'
 import { useCommandExecutor } from 'src/core/services/CommandExecutor'
 import { useUtils } from 'src/core/services/Utils'
