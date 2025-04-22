@@ -55,6 +55,7 @@ class FirestoreFeaturesPersistence implements FeaturesPersistence {
   async saveActiveFeatures(activeFeatures: string[]) {
     const docs = await getDocs(featuresCollection())
     //_.map(docs, (doc: any) => doc.data() as string)
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     docs.forEach(async (doc: any) => {
       console.log('deleting document', doc)
       await deleteDoc(featureDoc(doc.id))
