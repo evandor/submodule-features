@@ -5,19 +5,17 @@
       <div class="col-12">
         <q-toolbar-title>
           <div class="row justify-start items-baseline">
-            <div class="col-1">
-              <q-icon
-                name="chevron_left"
-                class="cursor-pointer q-mr-lg"
-                size="24px"
-                @click="router.push('/mainpanel/settings')">
-                <q-tooltip>Back</q-tooltip>
-              </q-icon>
-            </div>
+            <!--            <div class="col-1">-->
+            <!--              <q-icon-->
+            <!--                name="chevron_left"-->
+            <!--                class="cursor-pointer q-mr-lg"-->
+            <!--                size="24px"-->
+            <!--                @click="router.push('/mainpanel/settings')">-->
+            <!--                <q-tooltip>Back</q-tooltip>-->
+            <!--              </q-icon>-->
+            <!--            </div>-->
             <div class="col-9">{{ title }}</div>
-            <div class="col text-right">
-              <OpenRightDrawerWidget />
-            </div>
+            <div class="col text-right cursor-pointer" @click="closeWindow()">x</div>
           </div>
         </q-toolbar-title>
       </div>
@@ -145,15 +143,13 @@ import { useFeaturesStore } from 'src/features/stores/featuresStore'
 import { useAuthStore } from 'src/stores/authStore'
 import { DrawerTabs, useUiStore } from 'src/ui/stores/uiStore'
 import InfoMessageWidget from 'src/ui/widgets/InfoMessageWidget.vue'
-import OpenRightDrawerWidget from 'src/ui/widgets/OpenRightDrawerWidget.vue'
 import { onMounted, ref, watchEffect } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const router = useRouter()
 
 const title = ref('')
-const { sendMsg } = useUtils()
+const { closeWindow } = useUtils()
 
 useUiStore().rightDrawerSetActiveTab(DrawerTabs.FEATURES)
 
