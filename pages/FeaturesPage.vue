@@ -26,6 +26,7 @@
 
   <InfoMessageWidget
     :probability="1"
+    class="q-ma-md"
     ident="featuresPage_overview"
     hint="The Tabsets Extension starts simple - you can manage tabs - but it has more to offer. Check out additional features (some of which may require additional browser permissions which you will have to grant)." />
 
