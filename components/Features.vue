@@ -104,9 +104,6 @@ const featuresByType = (type: FeatureType) =>
     return typeAndModeMatch
   })
 
-//@ts-ignore
-const appVersion = import.meta.env.PACKAGE_VERSION
-
 const iconColor2 = (f: Feature) => {
   return useFeaturesStore().activeFeatures.indexOf(f.ident.toLowerCase()) >= 0
     ? f.defaultColor
