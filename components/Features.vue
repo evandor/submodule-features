@@ -1,9 +1,7 @@
 <template>
   <div class="q-ma-md">
     <b>Recommended Features</b>
-    <ToggleAllFeaturesInCategory
-      v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
-      :category="'RECOMMENDED'" />
+    <ToggleAllFeaturesInCategory v-if="useSettingsStore().has('DEV_MODE')" :category="'RECOMMENDED'" />
   </div>
 
   <q-list>
@@ -11,7 +9,7 @@
       v-for="f in featuresByType('RECOMMENDED')"
       clickable
       v-ripple
-      :dense="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
+      :dense="useSettingsStore().has('DEV_MODE')"
       :active="f === selected2"
       :disable="wrongMode(f)"
       @click="showFeature2(f)">
@@ -25,7 +23,7 @@
 
   <div class="q-ma-md">
     <b>Optional Features</b>
-    <ToggleAllFeaturesInCategory v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)" :category="'OPTIONAL'" />
+    <ToggleAllFeaturesInCategory v-if="useSettingsStore().has('DEV_MODE')" :category="'OPTIONAL'" />
   </div>
 
   <q-list>
@@ -33,7 +31,7 @@
       v-for="f in featuresByType('OPTIONAL')"
       clickable
       v-ripple
-      :dense="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
+      :dense="useSettingsStore().has('DEV_MODE')"
       :active="f === selected2"
       :disable="wrongMode(f)"
       @click="showFeature2(f)">
@@ -45,19 +43,17 @@
     </q-item>
   </q-list>
 
-  <div class="q-ma-md" v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)">
+  <div class="q-ma-md" v-if="useSettingsStore().has('DEV_MODE')">
     <b>Experimental Features</b>
-    <ToggleAllFeaturesInCategory
-      v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
-      :category="'EXPERIMENTAL'" />
+    <ToggleAllFeaturesInCategory v-if="useSettingsStore().has('DEV_MODE')" :category="'EXPERIMENTAL'" />
   </div>
 
-  <q-list v-if="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)">
+  <q-list v-if="useSettingsStore().has('DEV_MODE')">
     <q-item
       v-for="f in featuresByType('EXPERIMENTAL')"
       clickable
       v-ripple
-      :dense="useFeaturesStore().hasFeature(FeatureIdent.DEV_MODE)"
+      :dense="useSettingsStore().has('DEV_MODE')"
       :active="f === selected2"
       :disable="wrongMode(f)"
       @click="showFeature2(f)">
@@ -74,7 +70,8 @@
 import _ from 'lodash'
 import { useQuasar } from 'quasar'
 import { AppFeatures } from 'src/app/models/AppFeatures'
-import { FeatureIdent, FeatureType } from 'src/app/models/FeatureIdent'
+import { FeatureType } from 'src/app/models/FeatureIdent'
+import { useSettingsStore } from 'src/core/stores/settingsStore'
 import { Feature } from 'src/features/models/Feature'
 import { useFeaturesStore } from 'src/features/stores/featuresStore'
 import ToggleAllFeaturesInCategory from 'src/features/widgets/ToggleAllFeaturesInCategory.vue'
