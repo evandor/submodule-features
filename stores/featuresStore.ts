@@ -3,7 +3,7 @@ import { AppFeatures } from 'src/app/models/AppFeatures'
 import { FeatureIdent } from 'src/app/models/FeatureIdent'
 import { useUtils } from 'src/core/services/Utils'
 import FeaturesPersistence from 'src/features/persistence/FeaturesPersistence'
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
 export const useFeaturesStore = defineStore('features', () => {
   const { sendMsg, inBexMode } = useUtils()
@@ -103,26 +103,36 @@ export const useFeaturesStore = defineStore('features', () => {
     }
   }
 
-  const deactivateFeature = computed(() => {
-    return (feature: string): void => {
-      //console.log("deactivating", feature)
-      deactivateRecursive(feature)
-    }
-  })
+  const deactivateFeature = (feature: string): void => {
+    //console.log("deactivating", feature)
+    deactivateRecursive(feature)
+  }
 
-  const hasFeature = computed(() => {
-    return (feature: FeatureIdent): boolean => {
-      // if (feature === FeatureIdent.SIDE_PANEL) {
-      //   // @ts-expect-error TODO
-      //   return chrome.sidePanel !== undefined
-      // }
-      const appFeature = new AppFeatures().getFeature(feature)
-      if (appFeature) {
-        return activeFeatures.value.indexOf(feature.toLowerCase()) >= 0
-      }
-      return false
+  // const hasFeature = computed(() => {
+  //   return (feature: FeatureIdent): boolean => {
+  //     // if (feature === FeatureIdent.SIDE_PANEL) {
+  //     //   // @ts-expect-error TODO
+  //     //   return chrome.sidePanel !== undefined
+  //     // }
+  //     const appFeature = new AppFeatures().getFeature(feature)
+  //     if (appFeature) {
+  //       return activeFeatures.value.indexOf(feature.toLowerCase()) >= 0
+  //     }
+  //     return false
+  //   }
+  // })
+
+  const hasFeature = (feature: FeatureIdent): boolean => {
+    // if (feature === FeatureIdent.SIDE_PANEL) {
+    //   // @ts-expect-error TODO
+    //   return chrome.sidePanel !== undefined
+    // }
+    const appFeature = new AppFeatures().getFeature(feature)
+    if (appFeature) {
+      return activeFeatures.value.indexOf(feature.toLowerCase()) >= 0
     }
-  })
+    return false
+  }
 
   return {
     initialize,

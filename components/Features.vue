@@ -90,7 +90,7 @@ const featuresByType = (type: FeatureType) =>
     if (f.requires.length > 0) {
       let missingRequirement = false
       f.requires.forEach((requirement: string) => {
-        if (useFeaturesStore().activeFeatures.indexOf(requirement.toLowerCase()) === -1) {
+        if (useFeaturesStore().activeFeatures.value.indexOf(requirement.toLowerCase()) === -1) {
           missingRequirement = true
         }
       })
@@ -102,7 +102,7 @@ const featuresByType = (type: FeatureType) =>
   })
 
 const iconColor2 = (f: Feature) => {
-  return useFeaturesStore().activeFeatures.indexOf(f.ident.toLowerCase()) >= 0
+  return useFeaturesStore().activeFeatures.value.indexOf(f.ident.toLowerCase()) >= 0
     ? f.defaultColor
       ? f.defaultColor
       : 'green'
