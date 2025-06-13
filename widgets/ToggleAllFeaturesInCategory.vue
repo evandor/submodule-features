@@ -37,13 +37,13 @@ watchEffect(() => {
   const allActiveFeatures = useFeaturesStore().activeFeatures
   activeFeatures.value = new AppFeatures().features
     .filter((f: Feature) => f.type === props.category)
-    .filter((f: Feature) => allActiveFeatures.value.indexOf(f.ident.toLowerCase()) >= 0)
+    .filter((f: Feature) => allActiveFeatures.indexOf(f.ident.toLowerCase()) >= 0)
 })
 watchEffect(() => {
   const allActiveFeatures = useFeaturesStore().activeFeatures
   deactiveFeatures.value = new AppFeatures().features
     .filter((f: Feature) => f.type === props.category)
-    .filter((f: Feature) => allActiveFeatures.value.indexOf(f.ident.toLowerCase()) < 0)
+    .filter((f: Feature) => allActiveFeatures.indexOf(f.ident.toLowerCase()) < 0)
 })
 
 const activateAll = () => {
