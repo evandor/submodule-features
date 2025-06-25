@@ -27,10 +27,6 @@ export const useFeaturesStore = defineStore('features', () => {
 
   async function load() {
     activeFeatures.value = await storage.getActiveFeatures()
-    //console.log("loaded from storage", activeFeatures.value)
-    // if (process.env.MODE !== 'bex') {
-    //   return
-    // }
     if (inBexMode() && chrome && chrome.permissions) {
       // issues in vitest where chrome is not defined
       permissions.value = await chrome.permissions.getAll()
