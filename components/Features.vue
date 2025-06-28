@@ -6,7 +6,7 @@
 
   <q-list>
     <q-item
-      v-for="f in featuresByType('RECOMMENDED')"
+      v-for="f in featuresByType(['RECOMMENDED', 'RECOMMENDED_POPUP'])"
       clickable
       v-ripple
       :dense="useSettingsStore().has('DEV_MODE')"
@@ -28,7 +28,7 @@
 
   <q-list>
     <q-item
-      v-for="f in featuresByType('OPTIONAL')"
+      v-for="f in featuresByType(['OPTIONAL'])"
       clickable
       v-ripple
       :dense="useSettingsStore().has('DEV_MODE')"
@@ -50,7 +50,7 @@
 
   <q-list v-if="useSettingsStore().has('DEV_MODE')">
     <q-item
-      v-for="f in featuresByType('EXPERIMENTAL')"
+      v-for="f in featuresByType(['EXPERIMENTAL'])"
       clickable
       v-ripple
       :dense="useSettingsStore().has('DEV_MODE')"
@@ -84,9 +84,9 @@ const selected2 = ref<Feature | undefined>(undefined)
 
 const features = ref(new AppFeatures().features)
 
-const featuresByType = (type: FeatureType) =>
+const featuresByType = (types: FeatureType[]) =>
   _.filter(features.value, (f: Feature) => {
-    const typeAndModeMatch = f.type === type.toString() && !wrongMode(f)
+    const typeAndModeMatch = types.map((t: FeatureType) => t.toString()).indexOf(f.type) >= 0 && !wrongMode(f)
     if (f.requires.length > 0) {
       let missingRequirement = false
       f.requires.forEach((requirement: string) => {
